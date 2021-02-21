@@ -9,19 +9,19 @@ const mongoose = require('mongoose');
 
 // CONFIG
 const PORT = process.env.PORT || 3000;
-const MONGOURI = process.env.MONGO;
+const MONGOURI = process.env.MONGOLOCAL;
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
-app.use(
-	session({
-		secret: process.env.SECRET,
-		resave: false,
-		saveUninitialized: false,
-	})
-);
+// app.use(
+// 	session({
+// 		secret: process.env.SECRET,
+// 		resave: false,
+// 		saveUninitialized: false,
+// 	})
+// );
 
 // DATABASE
 mongoose.connect(MONGOURI, { useNewUrlParser: true });

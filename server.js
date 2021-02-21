@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
@@ -15,13 +16,13 @@ const MONGOURI = process.env.MONGOLOCAL;
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
-// app.use(
-// 	session({
-// 		secret: process.env.SECRET,
-// 		resave: false,
-// 		saveUninitialized: false,
-// 	})
-// );
+app.use(
+	session({
+		secret: process.env.SECRET,
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 
 // DATABASE
 mongoose.connect(MONGOURI, { useNewUrlParser: true });

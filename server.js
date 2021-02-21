@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 // CONTROLLER DEPENDENCIES
 
@@ -14,12 +14,20 @@ const MONGOURI = process.env.MONGO;
 // MIDDLEWARE
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
+app.use(
+	session({
+		secret: process.env.SECRET,
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 
 // DATABASE
-// mongoose.connect(MONGOURI, { useNewUrlParser: true });
-// mongoose.connection.once('open', () => {
-// 	console.log('connected to mongo');
-// });
+mongoose.connect(MONGOURI, { useNewUrlParser: true });
+mongoose.connection.once('open', () => {
+	console.log('connected to mongo');
+});
 
 // ROUTES
 

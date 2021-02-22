@@ -14,6 +14,8 @@ Food Nomad is an app that advocates the sharing of recipes, lifehacks and excess
 
 ---
 
+[Food Nomad Web Mockup](https://www.figma.com/proto/UcZCNESBlWCKz99K9GHzox/Food-Nomad-Web-App?node-id=1%3A2&scaling=min-zoom)
+
 ## Technologies Used:
 
 ---

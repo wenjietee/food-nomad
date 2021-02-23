@@ -7,6 +7,8 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 // CONTROLLER DEPENDENCIES
+const userController = require('./controllers/users');
+const sessionsController = require('./controllers/sessions');
 
 // CONFIG
 const PORT = process.env.PORT || 3000;
@@ -29,6 +31,10 @@ mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
 	console.log('connected to mongo');
 });
+
+//CONTROLLER ROUTES
+app.use('/users', userController);
+app.use('/sessions', sessionsController);
 
 // ROUTES
 app.get('/', (req, res) => {

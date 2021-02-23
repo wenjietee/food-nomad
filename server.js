@@ -31,7 +31,9 @@ mongoose.connection.once('open', () => {
 });
 
 // ROUTES
-
+app.get('/', (req, res) => {
+	res.render('index.ejs');
+});
 // LISTEN
 app.listen(PORT, () => {
 	console.log(`listening on port:${PORT}`);

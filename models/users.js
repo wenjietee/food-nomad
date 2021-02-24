@@ -8,7 +8,7 @@ const userSchema = Schema({
 	username: { type: String, required: true },
 	password: { type: String, required: true },
 	recipes: [String],
-	zip: [Number],
+	zip: Number,
 });
 
 const User = mongoose.model('User', userSchema);

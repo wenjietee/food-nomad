@@ -20,12 +20,12 @@ dev.get('/seedUsers', (req, res) => {
 });
 
 // seed recipes
-
 dev.get('/seedRecipes', (req, res) => {
 	Recipe.create(seedData.recipes, (err, createdRecipes) => {
 		console.log(createdRecipes);
 		res.redirect('/');
 	});
+	//find a way to link recipe id to user
 });
 
 // delete users

@@ -1,4 +1,5 @@
 // DEPENDENCIES
+const bcrypt = require('bcrypt');
 const express = require('express');
 const sessions = express.Router();
 const User = require('../models/users');
@@ -11,7 +12,14 @@ sessions.get('/new', (req, res) => {
 });
 
 sessions.post('/', (req, res) => {
-	User.findOne({ username: req.body.username }, (err, foundUser) => {});
+	User.findOne({ username: req.body.username }, (err, foundUser) => {
+		if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+			req.session.currentUser = foundUser;
+			res.redirect('dashboard/');
+		} else {
+			res.send('wrong password');
+		}
+	});
 });
 
 // delete user session
@@ -21,4 +29,5 @@ sessions.delete('/', (req, res) => {
 	});
 });
 
+// EXPORT
 module.exports = sessions;

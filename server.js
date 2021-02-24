@@ -9,10 +9,11 @@ const mongoose = require('mongoose');
 // CONTROLLER DEPENDENCIES
 const userController = require('./controllers/users');
 const sessionsController = require('./controllers/sessions');
+const dashboardController = require('./controllers/dashboard');
 
 // CONFIG
 const PORT = process.env.PORT || 3000;
-const MONGOURI = process.env.MONGOLOCAL;
+const MONGOURI = process.env.MONGOATLAS || process.env.MONGOLOCAL;
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
@@ -35,8 +36,11 @@ mongoose.connection.once('open', () => {
 //CONTROLLER ROUTES
 app.use('/users', userController);
 app.use('/sessions', sessionsController);
+app.use('/dashboard', dashboardController);
 
 // ROUTES
+
+// main index
 app.get('/', (req, res) => {
 	res.render('index.ejs');
 });

@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const userController = require('./controllers/users');
 const sessionsController = require('./controllers/sessions');
 const dashboardController = require('./controllers/dashboard');
+const devController = require('./controllers/dev');
 
 // CONFIG
 const PORT = process.env.PORT || 3000;
@@ -37,6 +38,7 @@ mongoose.connection.once('open', () => {
 app.use('/users', userController);
 app.use('/sessions', sessionsController);
 app.use('/dashboard', dashboardController);
+app.use('/dev', devController); //for dev testing
 
 // ROUTES
 

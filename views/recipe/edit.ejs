@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	<body>
+		<!-- Header  -->
+		<h1 id="header">Welcome</h1>
+		<%- include('../partials/logout.ejs') %>
+
+		<div class="row">
+			<!-- Side Nav -->
+			<div class="col s12 m4 l3"><%- include('../partials/nav.ejs') %></div>
+			<!-- Content -->
+			<div class="col s12 m8 l9">
+				<div>
+					<!-- Create/Edit Recipe Form -->
+					<form action="/" method="POST" id="recipeform">
+						<%- include('../partials/recipeform.ejs') %>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

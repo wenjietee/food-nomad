@@ -1,6 +1,6 @@
 // DEPENDENCIES
 const express = require('express');
-const dash = express.Router();
+const app = express.Router();
 const User = require('../models/users');
 const Recipe = require('../models/recipe');
 
@@ -17,11 +17,10 @@ const isAuthenticated = (req, res, next) => {
 
 // ROUTES
 
-// dashboard index
-dash.get('/', isAuthenticated, (req, res) => {
+// app index
+app.get('/', isAuthenticated, (req, res) => {
 	User.find({}, (err, foundUsers) => {
-		//render dashboard
-		res.render('dashboard/index.ejs', {
+		res.render('app/index.ejs', {
 			currentUser: req.session.currentUser,
 			users: foundUsers,
 		});
@@ -29,4 +28,4 @@ dash.get('/', isAuthenticated, (req, res) => {
 });
 
 // EXPORT
-module.exports = dash;
+module.exports = app;

@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 // CONTROLLER DEPENDENCIES
 const userController = require('./controllers/users');
 const sessionsController = require('./controllers/sessions');
-const dashboardController = require('./controllers/dashboard');
+const appController = require('./controllers/app');
 const devController = require('./controllers/dev');
 
 // CONFIG
@@ -37,7 +37,7 @@ mongoose.connection.once('open', () => {
 //CONTROLLER ROUTES
 app.use('/users', userController);
 app.use('/sessions', sessionsController);
-app.use('/dashboard', dashboardController);
+app.use('/app', appController);
 app.use('/dev', devController); //for dev testing
 
 // ROUTES

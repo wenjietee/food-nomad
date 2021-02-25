@@ -1,7 +1,19 @@
 const seedData = {
 	users: [
-		{ username: 'jane89', password: 'jane123', recipes: [], zip: 560312 },
-		{ username: 'herblover', password: 'basil123', recipes: [], zip: 525497 },
+		{
+			username: 'jane89',
+			password: 'jane123',
+			recipes: [],
+			email: 'jane89@gmail.com',
+			zip: 560312,
+		},
+		{
+			username: 'herblover',
+			password: 'basil123',
+			recipes: [],
+			email: 'herby@gmail.com',
+			zip: 525497,
+		},
 	],
 	recipes: [
 		{

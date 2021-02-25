@@ -8,20 +8,7 @@
         <h1>New Nomad</h1>
         <div >
           <form action="/users" method="POST">
-            <div class="row">
-              <div >
-                <input placeholder="Placeholder" id="username" type="text" class="validate" name="username" required>
-                <label for="username">User Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                <input id="password" type="password" class="validate" name="password" required>
-                <label for="password">Password</label>
-              </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            </button>
+            <%- include('../partials/userform.ejs') %>
           </form>
         </div>
     </body>

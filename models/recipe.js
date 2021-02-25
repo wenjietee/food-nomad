@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const recipeSchema = Schema({
 	name: { type: String, required: true },
 	author: { type: String, required: true },
+	//imageURL: String, //stretch goal
 	ingredients: [String],
 	instructions: { type: String, required: true },
 });

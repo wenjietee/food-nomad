@@ -45,8 +45,20 @@ app.post('/profile', isAuthenticated, (req, res) => {
 	});
 });
 
+// edit recipe
+app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
+	Recipe.findById(req.params.id, (err, foundRecipe) => {
+		if (err) console.log(err);
+		else {
+			res.render('recipe/edit.ejs', {
+				recipe: foundRecipe,
+			});
+		}
+	});
+});
+
 // delete recipe
-app.delete('recipe/:id', isAuthenticated, (req, res) => {
+app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {

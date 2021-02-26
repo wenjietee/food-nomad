@@ -46,7 +46,7 @@ app.post('/profile', isAuthenticated, (req, res) => {
 });
 
 // delete recipe
-app.delete('/:id', isAuthenticated, (req, res) => {
+app.delete('recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {

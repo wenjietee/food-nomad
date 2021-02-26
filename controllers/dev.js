@@ -32,7 +32,7 @@ dev.get('/seedRecipes', (req, res) => {
 					(err, foundUser) => {
 						if (err) console.log(err);
 						else {
-							res.redirect('/app/profile');
+							res.redirect('/');
 						}
 					}
 				);

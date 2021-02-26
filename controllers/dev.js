@@ -21,11 +21,24 @@ dev.get('/seedUsers', (req, res) => {
 
 // seed recipes
 dev.get('/seedRecipes', (req, res) => {
-	Recipe.create(seedData.recipes, (err, createdRecipes) => {
-		console.log(createdRecipes);
-		res.redirect('/');
+	seedData.recipes.forEach((recipe) => {
+		Recipe.create(recipe, (err, createdRecipe) => {
+			if (err) console.log(err);
+			else {
+				// add create recipe id to user recipes array
+				User.findOneAndUpdate(
+					{ username: createdRecipe.author },
+					{ $push: { recipes: createdRecipe.id } },
+					(err, foundUser) => {
+						if (err) console.log(err);
+						else {
+							res.redirect('/app/profile');
+						}
+					}
+				);
+			}
+		});
 	});
-	//find a way to link recipe id to user
 });
 
 // delete users

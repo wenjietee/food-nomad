@@ -19,15 +19,28 @@ const isAuthenticated = (req, res, next) => {
 
 // new recipe
 app.get('/recipe/new', isAuthenticated, (req, res) => {
-	res.render('recipe/new.ejs');
+	res.render('recipe/new.ejs', {
+		currentUser: req.session.currentUser,
+	});
 });
 
-// create recipe //append recipe id to user
-app.post('/', isAuthenticated, (req, res) => {
+// create recipe
+app.post('/profile', isAuthenticated, (req, res) => {
+	// create recipe from form inputs
 	Recipe.create(req.body, (err, createdRecipe) => {
 		if (err) console.log(err);
 		else {
-			res.redirect('/app/profile');
+			// add create recipe id to user recipes array
+			User.findOneAndUpdate(
+				{ username: createdRecipe.author },
+				{ $push: { recipes: createdRecipe.id } },
+				(err, foundUser) => {
+					if (err) console.log(err);
+					else {
+						res.redirect('/app/profile');
+					}
+				}
+			);
 		}
 	});
 });

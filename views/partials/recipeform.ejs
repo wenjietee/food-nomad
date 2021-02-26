@@ -1,38 +1,46 @@
 <!-- Recicpe Name -->
 <input
 	placeholder=""
-	id="recipe"
+	id="name"
 	type="text"
 	class="validate"
-	name="recipe"
+	name="name"
 	required
 />
-<label for="recipe">Recipe / Idea Name</label>
+<label for="name">Recipe / Idea Name</label>
 
 <!-- Ingredients -->
-<input
-	placeholder=""
+
+<textarea
+	rows="8"
+	cols="50"
 	id="ingredients"
-	type="text"
 	class="validate"
 	name="ingredients"
+	form="recipeform"
 	required
-/>
-<textarea rows="4" cols="50" name="ingredients" form="recipeform"></textarea>
+></textarea>
+
 <label for="ingredients">Ingredients</label>
 
 <!-- Instructions -->
-<input
-	placeholder=""
-	id="ingredients"
-	type="text"
+<textarea
+	rows="8"
+	cols="50"
+	id="instructions"
 	class="validate"
-	name="ingredients"
+	name="instructions"
+	form="recipeform"
 	required
-/>
-<textarea rows="4" cols="50" name="instructions" form="recipeform"></textarea>
+></textarea>
 <label for="instructions">Instructions</label>
 
+<input
+	type="hidden"
+	id="author"
+	name="author"
+	value="<%= currentUser.username %>"
+/>
 <!-- Submit -->
 <button class="btn waves-effect waves-light" type="submit" name="action">
 	Submit

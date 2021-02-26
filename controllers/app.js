@@ -17,6 +17,11 @@ const isAuthenticated = (req, res, next) => {
 
 // ROUTES
 
+// new recipe
+app.get('/recipe/new', isAuthenticated, (req, res) => {
+	res.render('recipe/new.ejs');
+});
+
 // app index
 app.get('/', isAuthenticated, (req, res) => {
 	User.find({}, (err, foundUsers) => {

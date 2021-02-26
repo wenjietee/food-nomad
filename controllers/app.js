@@ -22,6 +22,26 @@ app.get('/recipe/new', isAuthenticated, (req, res) => {
 	res.render('recipe/new.ejs');
 });
 
+// create recipe //append recipe id to user
+app.post('/profile', isAuthenticated, (req, res) => {
+	Recipe.create(req.body, (err, createdRecipe) => {
+		if (err) console.log(err);
+		else {
+			res.redirect('/app/profile');
+		}
+	});
+});
+
+// delete recipe
+app.delete('/:id', isAuthenticated, (req, res) => {
+	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
+		if (err) console.log(err);
+		else {
+			res.redirect('/app/profile');
+		}
+	});
+});
+
 // profile index // to add mongoose recipe to route
 app.get('/profile', isAuthenticated, (req, res) => {
 	User.findOne(

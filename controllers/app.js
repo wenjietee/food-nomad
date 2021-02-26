@@ -45,7 +45,7 @@ app.post('/profile', isAuthenticated, (req, res) => {
 	});
 });
 
-// edit recipe
+// edit recipe // to link to show view
 app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
@@ -57,7 +57,7 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	});
 });
 
-// delete recipe
+// delete recipe // to link to show view
 app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
@@ -66,6 +66,18 @@ app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 		}
 	});
 });
+
+// show recipe // to link to main view and profile views
+app.get('/recipe/:id',isAuthenticated,(req,res)=>{
+	Recipe.findById(req.params.id,(err,foundRecipe)=>{
+		if(err)console.log(err)
+		else{
+			res.render('recipe/show.ejs',{
+				recipe:foundRecipe
+			})
+		}
+	})
+})
 
 // profile index // to add mongoose recipe to route
 app.get('/profile', isAuthenticated, (req, res) => {

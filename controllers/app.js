@@ -23,7 +23,7 @@ app.get('/recipe/new', isAuthenticated, (req, res) => {
 });
 
 // create recipe //append recipe id to user
-app.post('/profile', isAuthenticated, (req, res) => {
+app.post('/', isAuthenticated, (req, res) => {
 	Recipe.create(req.body, (err, createdRecipe) => {
 		if (err) console.log(err);
 		else {

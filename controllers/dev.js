@@ -8,6 +8,21 @@ const seedData = require('../models/seed');
 
 // ROUTES
 
+// get current user object
+dev.get('/currentUser', (req, res) => {
+	res.send(req.session.currentUser);
+});
+
+// get current user via mongoose
+dev.get('/mongooseUser', (req, res) => {
+	User.findOneAndUpdate(
+		{ username: req.session.currentUser.username },
+		(err, foundUser) => {
+			res.send(foundUser);
+		}
+	);
+});
+
 // seed users
 dev.get('/seedUsers', (req, res) => {
 	seedData.users.forEach((user) => {

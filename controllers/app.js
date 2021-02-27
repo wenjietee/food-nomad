@@ -74,18 +74,6 @@ app.put('/recipe/:id', (req, res) => {
 	});
 });
 
-// delete recipe // having issue
-app.delete('/recipe/:id', isAuthenticated, (req, res) => {
-	// remove recipe by id
-	Recipe.findByIdAndRemove(req.params.id),
-		(err, foundRecipe) => {
-			if (err) console.log(err);
-			else {
-				res.redirect('/app/profile');
-			}
-		};
-});
-
 // show recipe
 app.get('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
@@ -94,6 +82,27 @@ app.get('/recipe/:id', isAuthenticated, (req, res) => {
 			res.render('recipe/show.ejs', {
 				recipe: foundRecipe,
 			});
+		}
+	});
+});
+
+// delete recipe // having issue
+app.delete('/recipe/:id', isAuthenticated, (req, res) => {
+	// remove recipe by id
+	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
+		if (err) console.log(err);
+		else {
+			// remove recipe id from user array
+			User.findByIdAndUpdate(
+				req.session.currentUser.id,
+				{ $pull: { recipes: req.params.id } },
+				(err, foundUser) => {
+					if (err) console.log(err);
+					else {
+						res.redirect('/app/profile');
+					}
+				}
+			);
 		}
 	});
 });

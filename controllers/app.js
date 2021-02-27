@@ -51,6 +51,7 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 		if (err) console.log(err);
 		else {
 			res.render('recipe/edit.ejs', {
+				currentUser: req.session.currentUser,
 				recipe: foundRecipe,
 			});
 		}

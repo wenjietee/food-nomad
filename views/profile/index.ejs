@@ -30,7 +30,7 @@
 								</div>
 								<div class="card-action">
 									<a href="/app/recipe/<%= recipe.id %>">View</a>
-									<a href="#">Edit</a>
+									<a href="/app/recipe/<%= recipe.id %>/edit">Edit</a>
 									<!-- issue here -->
 									<form action="/app/recipe/<%= recipe.id %>?_method=DELETE" method="POST" id="delete">
 										<input type="submit" value="DELETE" id='delete-btn' />

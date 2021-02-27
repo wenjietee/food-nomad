@@ -57,17 +57,19 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	});
 });
 
-// delete recipe // to link to show view // need alert user
+// delete recipe // having issue
 app.delete('/recipe/:id', isAuthenticated, (req, res) => {
-	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
-		if (err) console.log(err);
-		else {
-			res.redirect('/app/profile');
-		}
-	});
+	// remove recipe by id
+	Recipe.findByIdAndRemove(req.params.id),
+		(err, foundRecipe) => {
+			if (err) console.log(err);
+			else {
+				res.redirect('/app/profile');
+			}
+		};
 });
 
-// show recipe // to link to main view and profile views
+// show recipe
 app.get('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);

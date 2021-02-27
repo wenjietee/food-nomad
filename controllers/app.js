@@ -116,11 +116,14 @@ app.get('/profile/:id', isAuthenticated, (req, res) => {
 
 // app index
 app.get('/', isAuthenticated, (req, res) => {
-	// find all recipes
-	Recipe.find({}, (err, foundRecipes) => {
-		res.render('app/index.ejs', {
-			currentUser: req.session.currentUser,
-			recipes: foundRecipes,
+	// find all recipes and users
+	User.find({}, (err, foundUsers) => {
+		Recipe.find({}, (err, foundRecipes) => {
+			res.render('app/index.ejs', {
+				currentUser: req.session.currentUser,
+				recipes: foundRecipes,
+				users: foundUsers,
+			});
 		});
 	});
 });

@@ -101,15 +101,11 @@ app.get('/profile', isAuthenticated, (req, res) => {
 
 // app index
 app.get('/', isAuthenticated, (req, res) => {
-	// find all users
-	User.find({}, (err, foundUsers) => {
-		// find all recipes
-		Recipe.find({}, (err, foundRecipes) => {
-			res.render('app/index.ejs', {
-				currentUser: req.session.currentUser,
-				users: foundUsers,
-				recicpes: foundRecipes,
-			});
+	// find all recipes
+	Recipe.find({}, (err, foundRecipes) => {
+		res.render('app/index.ejs', {
+			currentUser: req.session.currentUser,
+			recipes: foundRecipes,
 		});
 	});
 });

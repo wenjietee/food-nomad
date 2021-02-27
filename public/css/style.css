@@ -2,11 +2,33 @@
 	border: 1px solid red;
 } */
 
-/* ! Sidenav */
-#sidenav {
+/* ! General */
+
+#sidenav,
+#content,
+#bulletin {
 	height: 100vh;
 }
 
+/* ! Sidenav */
+/* #sidenav {
+	min-width: 15vw;
+} */
+#navbtn {
+	width: 12em;
+	margin-top: 2em;
+}
+
 /* ! Content */
+#content {
+	overflow-y: scroll;
+}
 
 /* ! Bulletin */
+
+/* ! Footer */
+footer {
+	padding-bottom: 1em;
+}
+
+/* ! Responsive Layout */

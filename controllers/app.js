@@ -101,11 +101,11 @@ app.get('/profile', isAuthenticated, (req, res) => {
 });
 
 // other user index
-app.get('/profile/:id', isAuthenticated, (req, res) => {
+app.get('/profile/:username', isAuthenticated, (req, res) => {
 	// find user data
-	User.findOne({ username: req.params.id }, (err, foundUser) => {
+	User.findOne({ username: req.params.username }, (err, foundUser) => {
 		// find user recipes
-		Recipe.find({ author: req.params.id }, (err, foundUserRecipes) => {
+		Recipe.find({ author: req.params.username }, (err, foundUserRecipes) => {
 			res.render('profile/other.ejs', {
 				otherUser: foundUser,
 				userRecipes: foundUserRecipes,

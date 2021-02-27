@@ -10,6 +10,10 @@
 	height: 100vh;
 }
 
+#submit-btn {
+	margin-top: 2em;
+}
+
 /* ! Sidenav */
 /* #sidenav {
 	min-width: 15vw;

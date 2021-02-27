@@ -57,7 +57,7 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	});
 });
 
-// delete recipe // to link to show view
+// delete recipe // to link to show view // need alert user
 app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
@@ -79,9 +79,9 @@ app.get('/recipe/:id', isAuthenticated, (req, res) => {
 	});
 });
 
-// profile index
+// profile index // need to refactor
 app.get('/profile', isAuthenticated, (req, res) => {
-	// find user data
+	// find current user
 	User.findOne(
 		{ username: req.session.currentUser.username },
 		(err, foundUser) => {
@@ -89,6 +89,7 @@ app.get('/profile', isAuthenticated, (req, res) => {
 			Recipe.find(
 				{ author: req.session.currentUser.username },
 				(err, foundUserRecipes) => {
+					// render current user and user recipes
 					res.render('profile/index.ejs', {
 						currentUser: req.session.currentUser,
 						userRecipes: foundUserRecipes,
@@ -97,6 +98,20 @@ app.get('/profile', isAuthenticated, (req, res) => {
 			);
 		}
 	);
+});
+
+// other user index // need to refactor
+app.get('/profile/:id', isAuthenticated, (req, res) => {
+	// find user data
+	User.findOne({ username: req.params.id }, (err, foundUser) => {
+		// find user recipes
+		Recipe.find({ author: req.params.id }, (err, foundUserRecipes) => {
+			res.render('profile/index.ejs', {
+				otherUser: foundUser,
+				userRecipes: foundUserRecipes,
+			});
+		});
+	});
 });
 
 // app index

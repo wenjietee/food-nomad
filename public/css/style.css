@@ -14,6 +14,16 @@
 	margin-top: 2em;
 }
 
+#delete-btn {
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+	color: #ff5e5e;
+	padding: 0;
+	font-family: inherit;
+	font-size: inherit;
+}
 /* ! Sidenav */
 /* #sidenav {
 	min-width: 15vw;
@@ -38,6 +48,10 @@
 	margin-left: 2em;
 	width: 400px;
 	min-width: 200px;
+}
+
+#delete {
+	display: inline;
 }
 /* ! Bulletin */
 

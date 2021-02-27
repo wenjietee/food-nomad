@@ -68,35 +68,48 @@ app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 });
 
 // show recipe // to link to main view and profile views
-app.get('/recipe/:id',isAuthenticated,(req,res)=>{
-	Recipe.findById(req.params.id,(err,foundRecipe)=>{
-		if(err)console.log(err)
-		else{
-			res.render('recipe/show.ejs',{
-				recipe:foundRecipe
-			})
+app.get('/recipe/:id', isAuthenticated, (req, res) => {
+	Recipe.findById(req.params.id, (err, foundRecipe) => {
+		if (err) console.log(err);
+		else {
+			res.render('recipe/show.ejs', {
+				recipe: foundRecipe,
+			});
 		}
-	})
-})
+	});
+});
 
-// profile index // to add mongoose recipe to route
+// profile index
 app.get('/profile', isAuthenticated, (req, res) => {
+	// find user data
 	User.findOne(
 		{ username: req.session.currentUser.username },
 		(err, foundUser) => {
-			res.render('profile/index.ejs', {
-				currentUser: req.session.currentUser,
-			});
+			// find user recipes
+			Recipe.find(
+				{ author: req.session.currentUser },
+				(err, foundUserRecipes) => {
+					res.render('profile/index.ejs', {
+						currentUser: req.session.currentUser,
+						userRecipes: foundUserRecipes,
+					});
+				}
+			);
 		}
 	);
 });
 
-// app index // to add mongoose recipe to route
+// app index
 app.get('/', isAuthenticated, (req, res) => {
+	// find all users
 	User.find({}, (err, foundUsers) => {
-		res.render('app/index.ejs', {
-			currentUser: req.session.currentUser,
-			users: foundUsers,
+		// find all recipes
+		Recipe.find({}, (err, foundRecipes) => {
+			res.render('app/index.ejs', {
+				currentUser: req.session.currentUser,
+				users: foundUsers,
+				recicpes: foundRecipes,
+			});
 		});
 	});
 });

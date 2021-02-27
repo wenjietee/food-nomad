@@ -87,7 +87,7 @@ app.get('/profile', isAuthenticated, (req, res) => {
 		(err, foundUser) => {
 			// find user recipes
 			Recipe.find(
-				{ author: req.session.currentUser },
+				{ author: req.session.currentUser.username },
 				(err, foundUserRecipes) => {
 					res.render('profile/index.ejs', {
 						currentUser: req.session.currentUser,

@@ -14,10 +14,25 @@ const seedData = {
 			email: 'herby@gmail.com',
 			zip: '525497',
 		},
+		{
+			username: 'Test',
+			password: '123',
+			recipes: [],
+			email: 'test@gmail.com',
+			zip: '123456',
+		},
 	],
 	recipes: [
 		{
+			name: 'Test Description',
+			description: 'Test recipe',
+			ingredients: ['test'],
+			instructions: `test test`,
+			author: 'Test',
+		},
+		{
 			name: 'Potato Salad',
+			description: 'A simple and delicious potato salad with chives topping.',
 			ingredients: [
 				'2 potatos',
 				'2 eggs',
@@ -35,7 +50,8 @@ const seedData = {
 
 		{
 			name: 'Veggie Soup Stock',
-
+			description:
+				'Not sure what to do with wilted herbs and veggies? Make some stock!',
 			ingredients: ['wilted herbs', 'wilted vegetables'],
 			instructions: `Start by cleaning and processing your vegetables. The veggies and herbs listed above will yield a good basic stock, but you can add other vegetables depending on what you have access to!  Roughly chop larger veggies into big chunks. 
             Pour the water into your Instant Pot, then add all your chopped veggies and herbs. (Don’t add the salt just yet.)

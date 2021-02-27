@@ -15,7 +15,10 @@
 			<div class="col s12 m8 l9">
 				<div>
 					<h1 id="recipe-title"><%= recipe.name %></h1>
-					<h5 id="recipe-author">By: <%= recipe.author %></h5>
+					<h5 id="recipe-author">
+						By:
+						<a href="/app/profile/<%= recipe.author %>"><%= recipe.author %></a>
+					</h5>
 
 					<h3 id="recipe-ingredients-header">Ingredients:</h3>
 					<ul id="recipe-ingredients">

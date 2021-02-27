@@ -9,7 +9,7 @@ const userSchema = Schema({
 	password: { type: String, required: true },
 	recipes: [String],
 	email: { type: String, required: true },
-	zip: { type: Number, required: true },
+	zip: { type: String, required: true },
 });
 
 const User = mongoose.model('User', userSchema);

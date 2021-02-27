@@ -8,6 +8,8 @@ const seedData = require('../models/seed');
 
 // ROUTES
 
+// QUERY DATA
+
 // get current user object
 dev.get('/currentUser', (req, res) => {
 	res.send(req.session.currentUser);
@@ -22,6 +24,8 @@ dev.get('/mongooseUser', (req, res) => {
 		}
 	});
 });
+
+// SEED DATA
 
 // seed users
 dev.get('/seedUsers', (req, res) => {
@@ -56,6 +60,8 @@ dev.get('/seedRecipes', (req, res) => {
 	});
 });
 
+// DANGER ZONE
+
 // delete users
 dev.get('/deleteUsers', (req, res) => {
 	User.remove({}, (err, allUsers) => {
@@ -69,6 +75,16 @@ dev.get('/deleteRecipes', (req, res) => {
 	Recipe.remove({}, (err, allRecipes) => {
 		console.log(allRecipes);
 		res.redirect('/');
+	});
+});
+
+// delete all
+dev.get('/deleteAll', (req, res) => {
+	Recipe.remove({}, (err, allRecipes) => {
+		User.remove({}, (err, allUsers) => {
+			console.log(allUsers);
+			res.redirect('/');
+		});
 	});
 });
 

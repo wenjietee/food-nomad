@@ -5,14 +5,14 @@ const seedData = {
 			password: 'jane123',
 			recipes: [],
 			email: 'jane89@gmail.com',
-			zip: 560312,
+			zip: '560312',
 		},
 		{
 			username: 'herblover',
 			password: 'basil123',
 			recipes: [],
 			email: 'herby@gmail.com',
-			zip: 525497,
+			zip: '525497',
 		},
 	],
 	recipes: [

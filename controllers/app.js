@@ -46,7 +46,7 @@ app.post('/profile', isAuthenticated, (req, res) => {
 	});
 });
 
-// edit recipe // convert text area to array
+// edit recipe
 app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);

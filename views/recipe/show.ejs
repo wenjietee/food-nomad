@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<!-- Header  -->
-		<h2 id="header">Recipe Name</h2>
+		<h2 id="header">Recipe</h2>
 		<%- include('../partials/logout.ejs') %>
 
 		<div class="row">
@@ -14,7 +14,17 @@
 			<!-- Content -->
 			<div class="col s12 m8 l9">
 				<div>
-					<h1>Recipe</h1>
+					<h1 id="recipe-title"><%= recipe.name %></h1>
+					<h5 id="recipe-author">By: <%= recipe.author %></h5>
+
+					<h3 id="recipe-ingredients-header">Ingredients:</h3>
+					<ul id="recipe-ingredients">
+						<% recipe.ingredients.forEach(ingredient => { %>
+						<li id="recipe-ingredient"><%= ingredient %></li>
+						<% }) %>
+					</ul>
+					<h3 id="recipe-ingredients-header">Instructions:</h3>
+					<p id="recipe-instructions"><%= recipe.instructions %></p>
 				</div>
 			</div>
 		</div>

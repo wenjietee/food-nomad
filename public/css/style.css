@@ -34,7 +34,8 @@
 }
 
 /* ! Content */
-#content {
+#content,
+#recipe-content {
 	overflow-y: scroll;
 }
 

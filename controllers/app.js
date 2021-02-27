@@ -45,7 +45,7 @@ app.post('/profile', isAuthenticated, (req, res) => {
 	});
 });
 
-// edit recipe // to link to show view
+// edit recipe
 app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
@@ -54,6 +54,16 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 				currentUser: req.session.currentUser,
 				recipe: foundRecipe,
 			});
+		}
+	});
+});
+
+// update recipe
+app.put('/recipe/:id', (req, res) => {
+	Recipe.findByIdAndUpdate(req.params.id, req.body, (err, updatedRecipe) => {
+		if (err) console.log(err);
+		else {
+			res.redirect(`/app/recipe/${updatedRecipe.id}`);
 		}
 	});
 });

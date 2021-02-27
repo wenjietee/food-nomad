@@ -21,6 +21,7 @@ const isAuthenticated = (req, res, next) => {
 app.get('/recipe/new', isAuthenticated, (req, res) => {
 	res.render('recipe/new.ejs', {
 		currentUser: req.session.currentUser,
+		recipe: '',
 	});
 });
 

@@ -86,15 +86,15 @@ app.get('/recipe/:id', isAuthenticated, (req, res) => {
 	});
 });
 
-// delete recipe // having issue
+// delete recipe
 app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	// remove recipe by id
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {
-			// remove recipe id from user array
+			// remove recipe id from current user array
 			User.findByIdAndUpdate(
-				req.session.currentUser.id,
+				req.session.currentUser._id,
 				{ $pull: { recipes: req.params.id } },
 				(err, foundUser) => {
 					if (err) console.log(err);

@@ -13,14 +13,14 @@ dev.get('/currentUser', (req, res) => {
 	res.send(req.session.currentUser);
 });
 
-// get current user via mongoose
+// get current user id via mongoose
 dev.get('/mongooseUser', (req, res) => {
-	User.findOneAndUpdate(
-		{ username: req.session.currentUser.username },
-		(err, foundUser) => {
+	User.findById(req.session.currentUser._id, (err, foundUser) => {
+		if (err) console.log(err);
+		else {
 			res.send(foundUser);
 		}
-	);
+	});
 });
 
 // seed users

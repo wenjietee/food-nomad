@@ -45,7 +45,7 @@ app.post('/profile', isAuthenticated, (req, res) => {
 	});
 });
 
-// edit recipe
+// edit recipe // convert text area to array
 app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
@@ -60,6 +60,11 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 
 // update recipe
 app.put('/recipe/:id', (req, res) => {
+	//convert ingredients text to array
+	req.body.ingredients = req.body.ingredients
+		.replace(/[\r\n,]/g, '\n')
+		.split('\n');
+	// update recipe
 	Recipe.findByIdAndUpdate(req.params.id, req.body, (err, updatedRecipe) => {
 		if (err) console.log(err);
 		else {

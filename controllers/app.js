@@ -79,7 +79,7 @@ app.get('/recipe/:id', isAuthenticated, (req, res) => {
 	});
 });
 
-// profile index // need to refactor
+// profile index
 app.get('/profile', isAuthenticated, (req, res) => {
 	// find current user
 	User.findOne(
@@ -100,13 +100,13 @@ app.get('/profile', isAuthenticated, (req, res) => {
 	);
 });
 
-// other user index // need to refactor
+// other user index
 app.get('/profile/:id', isAuthenticated, (req, res) => {
 	// find user data
 	User.findOne({ username: req.params.id }, (err, foundUser) => {
 		// find user recipes
 		Recipe.find({ author: req.params.id }, (err, foundUserRecipes) => {
-			res.render('profile/index.ejs', {
+			res.render('profile/other.ejs', {
 				otherUser: foundUser,
 				userRecipes: foundUserRecipes,
 			});

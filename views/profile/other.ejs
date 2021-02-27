@@ -5,24 +5,48 @@
 	</head>
 	<body>
 		<!-- Header  -->
-		<h1 id="header"><%= otherUser.username%>'s Profile</h1>
+		<h2 id="header"><%= otherUser.username %> </h1>
 		<%- include('../partials/logout.ejs') %>
-
+		<!-- Body -->
 		<div class="row">
 			<!-- Side Nav -->
-			<div class="col s12 m4 l2"><%- include('../partials/nav.ejs') %></div>
-			<!-- Recipe Content -->
-			<div class="col s12 m8 l8">
-				<div>
-					<h1>tst1</h1>
-				</div>
+			<div class="col s12 m4 l2" id="sidenav">
+				<%- include('../partials/nav.ejs') %>
 			</div>
+			<!-- Recipe Content -->
+			<div class="col s12 m8 l8" id="content">
+				<div class="flex-container">
+					<% userRecipes.forEach(recipe => { %>
+					
+							<div class="card blue-grey darken-1 small flex-item">
+								<div class="card-content white-text">
+									<span class="card-title"><%= recipe.name %> </span>
+									<h5 id="author"></h5>
+								</div>
+								<div class="card-action">
+									<a href="#">View Recipe</a>
+								</div>
+							</div>
+						<% }) %>
+				</div>
+			
+			</div>
+
 			<!-- Ingredients Bulletin -->
-			<div class="col s12 m4 l2">
-				<div>
-					<h1>test</h1>
+			<div class="col s12 m4 l2" id="bulletin">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title">Your Ingredients</span>
+						<p>Ingredients</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Map</a>
+					</div>
 				</div>
 			</div>
 		</div>
+		<footer class="page-footer footer-copyright">
+			<div class="container">© 2021 Food Nomad</div>
+		</footer>
 	</body>
 </html>

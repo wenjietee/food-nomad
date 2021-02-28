@@ -29,12 +29,16 @@ Food Nomad is an app that advocates the sharing of recipes, lifehacks and excess
 - mongoose
 - ejs
 - dotenv
+- multer
+- multer-storage-cloudinary
+- cloudinary
 
 ## Database:
 
 ---
 
 - Mongo DB
+- Cloudinary
 
 ## Approach Taken
 

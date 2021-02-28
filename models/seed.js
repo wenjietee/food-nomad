@@ -30,6 +30,7 @@ const seedData = {
 			instructions: `test test`,
 			imageURL:
 				'https://i.ndtvimg.com/i/2017-08/thai-curry-620x350_620x350_41502105379.jpg',
+			imageID: '',
 			author: 'Test',
 		},
 		{
@@ -49,6 +50,7 @@ const seedData = {
             Chill: Transfer the potato salad to a serving bowl, cover, and refrigerate for 1-2 hours to chill.  Then serve chilled, topped with your desired garnishes.`,
 			imageURL:
 				'https://i.ndtvimg.com/i/2017-08/thai-curry-620x350_620x350_41502105379.jpg',
+			imageID: '',
 			author: 'jane89',
 		},
 
@@ -65,6 +67,7 @@ const seedData = {
             Pour the finished stock into an airtight container, and store in your fridge for up to a week (or freeze for longer-term storage).`,
 			imageURL:
 				'https://i.ndtvimg.com/i/2017-08/thai-curry-620x350_620x350_41502105379.jpg',
+			imageID: '',
 			author: 'herblover',
 		},
 	],

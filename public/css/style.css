@@ -25,10 +25,6 @@
 	font-size: inherit;
 }
 
-img {
-	width: 80%;
-}
-
 /* ! Sidenav */
 /* #sidenav {
 	min-width: 15vw;
@@ -38,11 +34,15 @@ img {
 	margin-top: 2em;
 }
 
+.main {
+	max-width: 60%;
+}
+
 /* ! Content */
-#content,
+/* #content,
 #recipe-content {
 	overflow-y: scroll;
-}
+} */
 
 .flex-container {
 	display: flex;

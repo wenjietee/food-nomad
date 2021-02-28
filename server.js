@@ -23,6 +23,7 @@ const SESSIONS_CONFIG = {
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(session(SESSIONS_CONFIG));

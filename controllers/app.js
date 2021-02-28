@@ -3,9 +3,9 @@ const express = require('express');
 const app = express.Router();
 const User = require('../models/users');
 const Recipe = require('../models/recipe');
-const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
-const path = require('path');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 // CONFIG
 const CLOUDINARY_CONFIG = {
@@ -25,21 +25,19 @@ const isAuthenticated = (req, res, next) => {
 	}
 };
 
-// multer for processing multipart/form-data during image upload
-multer({
-	storage: multer.diskStorage({}),
-	fileFilter: (req, file, res) => {
-		let ext = path.extname(file.originalName);
-		if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
-			res(new Error('File type not supported.'), false);
-			return;
-		}
-		res(null, true);
-	},
-});
-
 // cloudinary for storing of images
 cloudinary.config(CLOUDINARY_CONFIG);
+
+// storage engine
+const storage = new CloudinaryStorage({
+	cloudinary: cloudinary,
+	folder: 'food-nomad',
+	allowedFormats: ['jpg', 'png', 'jpeg'],
+	transformation: [{ width: 512, height: 512, crop: 'limit' }],
+});
+
+// multer for processing multipart / form-data
+const parser = multer({ storage: storage });
 
 // ROUTES
 
@@ -52,9 +50,22 @@ app.get('/recipe/new', isAuthenticated, (req, res) => {
 });
 
 // create recipe
-app.post('/profile', isAuthenticated, (req, res) => {
+app.post('/profile', parser.single('imageURL'), isAuthenticated, (req, res) => {
+	console.log(req.file);
+
+	// recipe data object
+	const recipeData = {
+		name: req.body.name,
+		description: req.body.description,
+		ingredients: req.body.ingredients,
+		instructions: req.body.instructions,
+		imageURL: req.file.path,
+		imageID: req.file.filename,
+		author: req.body.author,
+	};
+
 	// create recipe from form inputs
-	Recipe.create(req.body, (err, createdRecipe) => {
+	Recipe.create(recipeData, (err, createdRecipe) => {
 		if (err) console.log(err);
 		else {
 			// add create recipe id to user recipes array

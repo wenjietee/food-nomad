@@ -9,7 +9,8 @@ const recipeSchema = Schema({
 	description: String,
 	ingredients: [String],
 	instructions: { type: String, required: true },
-	imageURL: String,
+	imageURL: { type: String, required: true },
+	imageID: { type: String, required: true },
 	author: { type: String, required: true },
 });
 

@@ -24,6 +24,11 @@
 	font-family: inherit;
 	font-size: inherit;
 }
+
+img {
+	width: 80%;
+}
+
 /* ! Sidenav */
 /* #sidenav {
 	min-width: 15vw;
@@ -45,11 +50,11 @@
 }
 
 .flex-item {
-	padding: 1em;
 	margin-left: 2em;
 	width: 400px;
 	min-width: 200px;
 }
+
 /* ! Forms */
 textarea,
 p {
@@ -58,13 +63,14 @@ p {
 #delete {
 	display: inline;
 }
+
 /* ! Bulletin */
 
 /* ! Footer */
 footer {
 	padding-bottom: 1em;
 	/* sticks footer to bottom */
-	position: absolute;
+	/* position: absolute; */
 	width: 100%;
 	bottom: 0px;
 }

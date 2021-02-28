@@ -15,20 +15,20 @@ const devController = require('./controllers/dev');
 // CONFIG
 const PORT = process.env.PORT || 3000;
 const MONGOURI = process.env.MONGOATLAS || process.env.MONGOLOCAL;
+const SESSIONS_CONFIG = {
+	secret: process.env.SECRET,
+	resave: false,
+	saveUninitialized: false,
+};
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
-app.use(
-	session({
-		secret: process.env.SECRET,
-		resave: false,
-		saveUninitialized: false,
-	})
-);
+app.use(session(SESSIONS_CONFIG));
 
-// DATABASE
+// DATABASE ( MONGOOSE / MONGODB )
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
 	console.log('connected to mongo');

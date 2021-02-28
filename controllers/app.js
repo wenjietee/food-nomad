@@ -3,6 +3,16 @@ const express = require('express');
 const app = express.Router();
 const User = require('../models/users');
 const Recipe = require('../models/recipe');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+// CONFIG
+const CLOUDINARY_CONFIG = {
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
+};
 
 // MIDDLEWARE
 
@@ -15,6 +25,34 @@ const isAuthenticated = (req, res, next) => {
 	}
 };
 
+// recipe data parser
+const recipeParser = (body, file) => {
+	const recipeData = {
+		name: body.name,
+		description: body.description,
+		ingredients: body.ingredients,
+		instructions: body.instructions,
+		imageURL: file.path,
+		imageID: file.filename,
+		author: body.author,
+	};
+	return recipeData;
+};
+
+// cloudinary for storing of images
+cloudinary.config(CLOUDINARY_CONFIG);
+
+// storage engine
+const storage = new CloudinaryStorage({
+	cloudinary: cloudinary,
+	folder: 'food-nomad',
+	allowedFormats: ['jpg', 'png', 'jpeg'],
+	transformation: [{ width: 512, height: 512, crop: 'limit' }],
+});
+
+// multer for processing multipart / form-data
+const parser = multer({ storage: storage });
+
 // ROUTES
 
 // new recipe
@@ -26,9 +64,12 @@ app.get('/recipe/new', isAuthenticated, (req, res) => {
 });
 
 // create recipe
-app.post('/profile', isAuthenticated, (req, res) => {
+app.post('/profile', parser.single('imageURL'), isAuthenticated, (req, res) => {
+	// formatting recipe data
+	const recipeData = recipeParser(req.body, req.file);
+
 	// create recipe from form inputs
-	Recipe.create(req.body, (err, createdRecipe) => {
+	Recipe.create(recipeData, (err, createdRecipe) => {
 		if (err) console.log(err);
 		else {
 			// add create recipe id to user recipes array
@@ -60,16 +101,31 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 });
 
 // update recipe
-app.put('/recipe/:id', (req, res) => {
+app.put('/recipe/:id', parser.single('imageURL'), (req, res) => {
 	//convert ingredients text to array
 	req.body.ingredients = req.body.ingredients
 		.replace(/[\r\n,]/g, '\n')
 		.split('\n');
-	// update recipe
-	Recipe.findByIdAndUpdate(req.params.id, req.body, (err, updatedRecipe) => {
+
+	// formatting recipe data
+	const recipeData = recipeParser(req.body, req.file);
+
+	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {
-			res.redirect(`/app/recipe/${updatedRecipe.id}`);
+			// delete image from cloudinary
+			cloudinary.uploader.destroy(foundRecipe.imageID);
+			// update recipe
+			Recipe.findByIdAndUpdate(
+				req.params.id,
+				recipeData,
+				(err, updatedRecipe) => {
+					if (err) console.log(err);
+					else {
+						res.redirect(`/app/recipe/${updatedRecipe.id}`);
+					}
+				}
+			);
 		}
 	});
 });
@@ -92,6 +148,8 @@ app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {
+			// delete image from cloudinary
+			cloudinary.uploader.destroy(foundRecipe.imageID);
 			// remove recipe id from current user array
 			User.findByIdAndUpdate(
 				req.session.currentUser._id,

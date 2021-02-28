@@ -17,15 +17,19 @@
 			<div class="col s12 m8 l8" id="content">
 				<div class="flex-container">
 					<% if (userRecipes.length ===0) { %>
-						<h1>You have no recipes :(</h1>
+						<h1>You have no recipes 😔</h1>
 				
 					<% } else { %>
 					 
 					<% userRecipes.forEach(recipe => { %>
 					
-							<div class="card blue-grey darken-1 small flex-item">
-								<div class="card-content white-text">
+							<div class="card blue-grey darken-1 medium flex-item">
+								<div class="card-image">
+									<img src="<%= recipe.imageURL %>">
 									<span class="card-title"><%= recipe.name %> </span>
+								  </div>
+								<div class="card-content white-text">
+							
 									<p><%= recipe.description %> </p>
 								</div>
 								<div class="card-action">

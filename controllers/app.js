@@ -25,6 +25,20 @@ const isAuthenticated = (req, res, next) => {
 	}
 };
 
+// recipe data parser
+const recipeParser = (body, file) => {
+	const recipeData = {
+		name: body.name,
+		description: body.description,
+		ingredients: body.ingredients,
+		instructions: body.instructions,
+		imageURL: file.path,
+		imageID: file.filename,
+		author: body.author,
+	};
+	return recipeData;
+};
+
 // cloudinary for storing of images
 cloudinary.config(CLOUDINARY_CONFIG);
 
@@ -51,18 +65,8 @@ app.get('/recipe/new', isAuthenticated, (req, res) => {
 
 // create recipe
 app.post('/profile', parser.single('imageURL'), isAuthenticated, (req, res) => {
-	console.log(req.file);
-
-	// recipe data object
-	const recipeData = {
-		name: req.body.name,
-		description: req.body.description,
-		ingredients: req.body.ingredients,
-		instructions: req.body.instructions,
-		imageURL: req.file.path,
-		imageID: req.file.filename,
-		author: req.body.author,
-	};
+	// formatting recipe data
+	const recipeData = recipeParser(req.body, req.file);
 
 	// create recipe from form inputs
 	Recipe.create(recipeData, (err, createdRecipe) => {
@@ -97,16 +101,31 @@ app.get('/recipe/:id/edit', isAuthenticated, (req, res) => {
 });
 
 // update recipe
-app.put('/recipe/:id', (req, res) => {
+app.put('/recipe/:id', parser.single('imageURL'), (req, res) => {
 	//convert ingredients text to array
 	req.body.ingredients = req.body.ingredients
 		.replace(/[\r\n,]/g, '\n')
 		.split('\n');
-	// update recipe
-	Recipe.findByIdAndUpdate(req.params.id, req.body, (err, updatedRecipe) => {
+
+	// formatting recipe data
+	const recipeData = recipeParser(req.body, req.file);
+
+	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {
-			res.redirect(`/app/recipe/${updatedRecipe.id}`);
+			// delete image from cloudinary
+			cloudinary.uploader.destroy(foundRecipe.imageID);
+			// update recipe
+			Recipe.findByIdAndUpdate(
+				req.params.id,
+				recipeData,
+				(err, updatedRecipe) => {
+					if (err) console.log(err);
+					else {
+						res.redirect(`/app/recipe/${updatedRecipe.id}`);
+					}
+				}
+			);
 		}
 	});
 });

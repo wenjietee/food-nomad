@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = Schema({
 	name: { type: String, required: true },
-	//imageURL: String, //stretch goal
 	description: String,
 	ingredients: [String],
 	instructions: { type: String, required: true },
+	imageURL: String,
 	author: { type: String, required: true },
 });
 

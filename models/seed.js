@@ -28,6 +28,7 @@ const seedData = {
 			description: 'Test recipe',
 			ingredients: ['test'],
 			instructions: `test test`,
+			imageURL: '',
 			author: 'Test',
 		},
 		{
@@ -45,6 +46,7 @@ const seedData = {
             Toss everything together: Once the potatoes are ready to go, add in the mayo mixture, diced eggs, celery and onion.  Toss gently until evenly combined.
             Season: Taste and season with salt and pepper, to taste.  (Also feel free to add in a tablespoon or two of pickle juice if you would like.)
             Chill: Transfer the potato salad to a serving bowl, cover, and refrigerate for 1-2 hours to chill.  Then serve chilled, topped with your desired garnishes.`,
+			imageURL: '',
 			author: 'jane89',
 		},
 
@@ -59,6 +61,7 @@ const seedData = {
             When the timer goes off, hit “Cancel” to start the depressurization process. Allow the pressure to release naturally, which should take between 15 and 20 minutes.
             Finally, remove the lid and use a large slotted spoon to remove the solids from the stock, or pour the whole mixture through a strainer. Season with salt to taste, if desired. (Or you could leave the stock unsalted and just add as necessary to your recipes.)
             Pour the finished stock into an airtight container, and store in your fridge for up to a week (or freeze for longer-term storage).`,
+			imageURL: '',
 			author: 'herblover',
 		},
 	],

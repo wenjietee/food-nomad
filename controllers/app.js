@@ -3,6 +3,28 @@ const express = require('express');
 const app = express.Router();
 const User = require('../models/users');
 const Recipe = require('../models/recipe');
+const cloudinary = require('cloudinary').v2;
+const multer = require('multer');
+const path = require('path');
+
+// CONFIG
+const CLOUDINARY_CONFIG = {
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
+};
+
+const MULTER_CONFIG = {
+	storage: multer.diskStorage({}),
+	fileFilter: (req, file, res) => {
+		let ext = path.extname(file.originalName);
+		if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
+			res(new Error('File type not supported.'), false);
+			return;
+		}
+		res(null, true);
+	},
+};
 
 // MIDDLEWARE
 
@@ -14,6 +36,12 @@ const isAuthenticated = (req, res, next) => {
 		res.redirect('/sessions/new');
 	}
 };
+
+// cloudinary
+cloudinary.config(CLOUDINARY_CONFIG);
+
+// multer
+multer(MULTER_CONFIG);
 
 // ROUTES
 

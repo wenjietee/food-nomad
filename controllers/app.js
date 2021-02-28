@@ -14,18 +14,6 @@ const CLOUDINARY_CONFIG = {
 	api_secret: process.env.CLOUDINARY_API_SECRET,
 };
 
-const MULTER_CONFIG = {
-	storage: multer.diskStorage({}),
-	fileFilter: (req, file, res) => {
-		let ext = path.extname(file.originalName);
-		if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
-			res(new Error('File type not supported.'), false);
-			return;
-		}
-		res(null, true);
-	},
-};
-
 // MIDDLEWARE
 
 // check for unauthenticated user
@@ -37,11 +25,21 @@ const isAuthenticated = (req, res, next) => {
 	}
 };
 
-// cloudinary
-cloudinary.config(CLOUDINARY_CONFIG);
+// multer for processing multipart/form-data during image upload
+multer({
+	storage: multer.diskStorage({}),
+	fileFilter: (req, file, res) => {
+		let ext = path.extname(file.originalName);
+		if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
+			res(new Error('File type not supported.'), false);
+			return;
+		}
+		res(null, true);
+	},
+});
 
-// multer
-multer(MULTER_CONFIG);
+// cloudinary for storing of images
+cloudinary.config(CLOUDINARY_CONFIG);
 
 // ROUTES
 

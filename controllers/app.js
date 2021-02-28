@@ -129,6 +129,8 @@ app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	Recipe.findByIdAndRemove(req.params.id, (err, foundRecipe) => {
 		if (err) console.log(err);
 		else {
+			// delete image from cloudinary
+			cloudinary.uploader.destroy(foundRecipe.imageID);
 			// remove recipe id from current user array
 			User.findByIdAndUpdate(
 				req.session.currentUser._id,

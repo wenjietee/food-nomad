@@ -39,7 +39,7 @@ mongoose.connection.once('open', () => {
 app.use('/users', userController);
 app.use('/sessions', sessionsController);
 app.use('/app', appController);
-app.use('/foodshare', foodShareController);
+app.use('/food', foodShareController);
 app.use('/dev', devController); //for dev testing
 
 // ROUTES

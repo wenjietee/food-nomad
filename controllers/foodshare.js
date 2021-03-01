@@ -17,8 +17,8 @@ const isAuthenticated = (req, res, next) => {
 
 // ROUTES
 
-// new food
-foodShare.get('/food/new', isAuthenticated, (req, res) => {
+// new food // create new form for food update new view
+foodShare.get('/new', isAuthenticated, (req, res) => {
 	res.render('food/new.ejs', {
 		currentUser: req.session.currentUser,
 		food: '',
@@ -27,8 +27,8 @@ foodShare.get('/food/new', isAuthenticated, (req, res) => {
 
 // create food
 
-// edit food
-foodShare.get('/food/:id/edit', isAuthenticated, (req, res) => {
+// edit food // food update edit view
+foodShare.get('/:id/edit', isAuthenticated, (req, res) => {
 	Food.findById(req.params.id, (err, foundFood) => {
 		if (err) console.log(err);
 		else {
@@ -44,6 +44,6 @@ foodShare.get('/food/:id/edit', isAuthenticated, (req, res) => {
 
 // delete food
 
-// food map
+// food map // create google maps api
 
 module.exports = foodShare;

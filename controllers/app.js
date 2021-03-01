@@ -3,6 +3,7 @@ const express = require('express');
 const app = express.Router();
 const User = require('../models/users');
 const Recipe = require('../models/recipe');
+const Food = require('../models/food');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');

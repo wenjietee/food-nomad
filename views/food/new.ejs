@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	<body>
+		<!-- Header  -->
+		<h2 id="header">New Food</h2>
+		<%- include('../partials/logout.ejs') %>
+
+		<div class="row">
+			<!-- Side Nav -->
+			<div class="col s12 m4 l3"><%- include('../partials/nav.ejs') %></div>
+			<!-- Content -->
+			<div class="col s12 m8 l9">
+				<div>
+					<!-- Create/Edit Recipe Form -->
+					<!-- <form
+						action="/app/profile"
+						method="POST"
+						enctype="multipart/form-data"
+						id="recipeform"
+					>
+						<%- include('../partials/recipeform.ejs') %>
+					</form> -->
+				</div>
+			</div>
+		</div>
+		<%- include('../partials/footer.ejs') %>
+	</body>
+</html>

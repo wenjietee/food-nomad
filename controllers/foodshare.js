@@ -18,11 +18,32 @@ const isAuthenticated = (req, res, next) => {
 // ROUTES
 
 // new food
-// foodShare.get('/food/new', isAuthenticated, (req, res) => {
-// 	res.render('food/new.ejs', {
-// 		currentUser: req.session.currentUser,
-// 		food: '',
-// 	});
-// });
+foodShare.get('/food/new', isAuthenticated, (req, res) => {
+	res.render('food/new.ejs', {
+		currentUser: req.session.currentUser,
+		food: '',
+	});
+});
+
+// create food
+
+// edit food
+foodShare.get('/food/:id/edit', isAuthenticated, (req, res) => {
+	Food.findById(req.params.id, (err, foundFood) => {
+		if (err) console.log(err);
+		else {
+			res.render('food/edit.ejs', {
+				currentUser: req.session.currentUser,
+				food: foundFood,
+			});
+		}
+	});
+});
+
+// update food
+
+// delete food
+
+// food map
 
 module.exports = foodShare;

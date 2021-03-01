@@ -1,0 +1,56 @@
+<!-- Food Name -->
+<input
+	placeholder=""
+	id="name"
+	type="text"
+	class="validate"
+	name="name"
+	value="<%=food.name%> "
+	required
+/>
+<label for="name">Food Name</label>
+
+<!-- Quantity -->
+<input
+	id="quantity"
+	type="number"
+	class="validate"
+	name="quantity"
+	value="<%=food.quantity%> "
+	min="1"
+	required
+/>
+
+<label for="quantity">Quantity</label>
+
+<!-- Expiry -->
+
+<input
+	id="expiry"
+	type="date"
+	class="validate"
+	name="expiry"
+	value="<%=food.expiry%>"
+/>
+
+<label for="expiry">Expiry Date</label>
+
+<!-- Author -->
+<input
+	type="hidden"
+	id="author"
+	name="author"
+	value="<%= currentUser.username %>"
+/>
+
+<!-- Submit -->
+<div>
+	<button
+		class="btn waves-effect waves-light"
+		type="submit"
+		name="action"
+		id="submit-btn"
+	>
+		Submit
+	</button>
+</div>

@@ -27,6 +27,10 @@ foodShare.get('/new', isAuthenticated, (req, res) => {
 
 // create food
 foodShare.post('/', isAuthenticated, (req, res) => {
+	// format date input from form data
+	req.body.expiry = req.body.expiry.split('-').reverse().join('-');
+
+	// create food from form inputs
 	Food.create(req.body, (err, createdFood) => {
 		if (err) console.log(err);
 		else {
@@ -57,8 +61,12 @@ foodShare.get('/:id/edit', isAuthenticated, (req, res) => {
 	});
 });
 
-// update food // might need to check date formatting?
+// update food
 foodShare.put('/food/:id', isAuthenticated, (req, res) => {
+	// format date input from form data
+	req.body.expiry = req.body.expiry.split('-').reverse().join('-');
+
+	// update food from forms data
 	Food.findByIdAndUpdate(req.params.id, req.body, (err, updatedFood) => {
 		if (err) console.log(err);
 		else {

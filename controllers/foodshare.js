@@ -25,7 +25,7 @@ foodShare.get('/new', isAuthenticated, (req, res) => {
 	});
 });
 
-// create food // redirect to user profile
+// create food
 foodShare.post('/', isAuthenticated, (req, res) => {
 	Food.create(req.body, (err, createdFood) => {
 		if (err) console.log(err);
@@ -40,7 +40,6 @@ foodShare.post('/', isAuthenticated, (req, res) => {
 					}
 				}
 			);
-			res.redirect('/app/profile');
 		}
 	});
 });
@@ -58,14 +57,34 @@ foodShare.get('/:id/edit', isAuthenticated, (req, res) => {
 	});
 });
 
-// update food // redirect to user profile
+// update food // might need to check date formatting?
 foodShare.put('/food/:id', isAuthenticated, (req, res) => {
-	res.redirect('/app/profile');
+	Food.findByIdAndUpdate(req.params.id, req.body, (err, updatedFood) => {
+		if (err) console.log(err);
+		else {
+			res.redirect('/app/profile');
+		}
+	});
 });
 
 // delete food
 foodShare.delete('/food/:id', isAuthenticated, (req, res) => {
-	res.redirect('/app/profile');
+	Food.findByIdAndRemove(req.params.id, (err, foundFood) => {
+		if (err) console.log(err);
+		else {
+			// remove food id from current user array
+			User.findByIdAndUpdate(
+				req.session.currentUser._id,
+				{ $pull: { foods: req.params.id } },
+				(err, foundUser) => {
+					if (err) console.log(err);
+					else {
+						res.redirect('/app/profile');
+					}
+				}
+			);
+		}
+	});
 });
 
 // food map // create google maps api

@@ -4,7 +4,7 @@ const seedData = {
 			username: 'jane89',
 			password: 'jane123',
 			recipes: [],
-			food: [],
+			foods: [],
 			email: 'jane89@gmail.com',
 			zip: '560312',
 		},
@@ -12,7 +12,7 @@ const seedData = {
 			username: 'herblover',
 			password: 'basil123',
 			recipes: [],
-			food: [],
+			foods: [],
 			email: 'herby@gmail.com',
 			zip: '525497',
 		},
@@ -20,7 +20,7 @@ const seedData = {
 			username: 'Test',
 			password: '123',
 			recipes: [],
-			food: [],
+			foods: [],
 			email: 'test@gmail.com',
 			zip: '123456',
 		},
@@ -74,7 +74,7 @@ const seedData = {
 			author: 'herblover',
 		},
 	],
-	food: [],
+	foods: [],
 };
 
 module.exports = seedData;

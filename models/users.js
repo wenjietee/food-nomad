@@ -8,7 +8,7 @@ const userSchema = Schema({
 	username: { type: String, required: true },
 	password: { type: String, required: true },
 	recipes: [String],
-	food: [String],
+	foods: [String],
 	email: { type: String, required: true },
 	zip: { type: String, required: true },
 });

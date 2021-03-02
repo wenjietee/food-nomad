@@ -17,7 +17,7 @@ const isAuthenticated = (req, res, next) => {
 
 // ROUTES
 
-// new food // create new form for food update new view
+// new food
 foodShare.get('/new', isAuthenticated, (req, res) => {
 	res.render('food/new.ejs', {
 		currentUser: req.session.currentUser,
@@ -25,9 +25,27 @@ foodShare.get('/new', isAuthenticated, (req, res) => {
 	});
 });
 
-// create food
+// create food // redirect to user profile
+foodShare.post('/', isAuthenticated, (req, res) => {
+	Food.create(req.body, (err, createdFood) => {
+		if (err) console.log(err);
+		else {
+			User.findOneAndUpdate(
+				{ username: createdFood.author },
+				{ $push: { foods: createdFood.id } },
+				(err, foundUser) => {
+					if (err) console.log(err);
+					else {
+						res.redirect('/app/profile');
+					}
+				}
+			);
+			res.redirect('/app/profile');
+		}
+	});
+});
 
-// edit food // food update edit view
+// edit food
 foodShare.get('/:id/edit', isAuthenticated, (req, res) => {
 	Food.findById(req.params.id, (err, foundFood) => {
 		if (err) console.log(err);
@@ -40,9 +58,15 @@ foodShare.get('/:id/edit', isAuthenticated, (req, res) => {
 	});
 });
 
-// update food
+// update food // redirect to user profile
+foodShare.put('/food/:id', isAuthenticated, (req, res) => {
+	res.redirect('/app/profile');
+});
 
 // delete food
+foodShare.delete('/food/:id', isAuthenticated, (req, res) => {
+	res.redirect('/app/profile');
+});
 
 // food map // create google maps api
 

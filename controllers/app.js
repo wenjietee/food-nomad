@@ -176,11 +176,18 @@ app.get('/profile', isAuthenticated, (req, res) => {
 			Recipe.find(
 				{ author: req.session.currentUser.username },
 				(err, foundUserRecipes) => {
-					// render current user and user recipes
-					res.render('profile/index.ejs', {
-						currentUser: req.session.currentUser,
-						userRecipes: foundUserRecipes,
-					});
+					// find user foods
+					Food.find(
+						{ author: req.session.currentUser.username },
+						(err, foundUserFoods) => {
+							// render current user ,user foods and user recipes
+							res.render('profile/index.ejs', {
+								currentUser: req.session.currentUser,
+								userRecipes: foundUserRecipes,
+								userFoods: foundUserFoods,
+							});
+						}
+					);
 				}
 			);
 		}
@@ -193,9 +200,14 @@ app.get('/profile/:username', isAuthenticated, (req, res) => {
 	User.findOne({ username: req.params.username }, (err, foundUser) => {
 		// find user recipes
 		Recipe.find({ author: req.params.username }, (err, foundUserRecipes) => {
-			res.render('profile/other.ejs', {
-				otherUser: foundUser,
-				userRecipes: foundUserRecipes,
+			// find user foods
+			Food.find({ author: req.params.username }, (err, foundUserFoods) => {
+				// render other user ,user foods and user recipes
+				res.render('profile/other.ejs', {
+					otherUser: foundUser,
+					userRecipes: foundUserRecipes,
+					userFoods: foundUserFoods,
+				});
 			});
 		});
 	});
@@ -206,10 +218,13 @@ app.get('/', isAuthenticated, (req, res) => {
 	// find all recipes and users
 	User.find({}, (err, foundUsers) => {
 		Recipe.find({}, (err, foundRecipes) => {
-			res.render('app/index.ejs', {
-				currentUser: req.session.currentUser,
-				recipes: foundRecipes,
-				users: foundUsers,
+			Food.find({}, (err, foundFoods) => {
+				res.render('app/index.ejs', {
+					currentUser: req.session.currentUser,
+					recipes: foundRecipes,
+					users: foundUsers,
+					foods: foundFoods,
+				});
 			});
 		});
 	});

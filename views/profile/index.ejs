@@ -51,8 +51,23 @@
 			<div class="col s12 m4 l2" id="bulletin">
 				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
-						<span class="card-title">Your Ingredients</span>
-						<p>Ingredients</p>
+						<span class="card-title">You're sharing,</span>
+						<% userFoods.forEach(food => { %>
+							<div class="card blue-grey darken-1 food-card">
+								<div class="card-content white-text">
+								  <span class="card-title"><%= food.name %> </span>
+								  <p>Expiry: <%=food.expiry %></p>
+								  <p>Quantity: <%=food.quantity %></p>
+								  <p>Poster: <%=food.author %></p>
+								</div>
+								<div class="card-action">
+									<a href="#">Edit</a>
+									<form action="/app/recipe/<%= food.id %>?_method=DELETE" method="POST" id="delete">
+										<input type="submit" value="DELETE" id='delete-btn' />
+									</form>
+							</div>
+						 
+						<% }) %>
 					</div>
 					<div class="card-action">
 						<a href="/food/new">Share Food</a>

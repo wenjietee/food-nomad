@@ -104,6 +104,7 @@ foodShare.get('/map', isAuthenticated, (req, res) => {
 				currentUser: req.session.currentUser,
 				users: foundUsers,
 				foods: foundFoods,
+				map: process.env.GOOGLEMAPS_API_KEY,
 			});
 		});
 	});

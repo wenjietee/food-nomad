@@ -62,7 +62,7 @@ foodShare.get('/:id/edit', isAuthenticated, (req, res) => {
 });
 
 // update food
-foodShare.put('/food/:id', isAuthenticated, (req, res) => {
+foodShare.put('/:id', isAuthenticated, (req, res) => {
 	// format date input from form data
 	req.body.expiry = req.body.expiry.split('-').reverse().join('-');
 
@@ -76,7 +76,7 @@ foodShare.put('/food/:id', isAuthenticated, (req, res) => {
 });
 
 // delete food
-foodShare.delete('/food/:id', isAuthenticated, (req, res) => {
+foodShare.delete('/:id', isAuthenticated, (req, res) => {
 	Food.findByIdAndRemove(req.params.id, (err, foundFood) => {
 		if (err) console.log(err);
 		else {

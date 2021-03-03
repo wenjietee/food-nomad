@@ -16,7 +16,7 @@
 	type="number"
 	class="validate"
 	name="quantity"
-	value="<%=food.quantity%> "
+	value="<%=String(food.quantity)%>"
 	min="1"
 	required
 />
@@ -24,7 +24,7 @@
 <label for="quantity">Quantity</label>
 
 <!-- Expiry -->
-
+<!-- To show expiry in edit field -->
 <input
 	id="expiry"
 	type="date"

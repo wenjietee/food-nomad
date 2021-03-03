@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<%- include('../partials/head.ejs') %>
-        <!-- Google Maps -->
 
-        
+		<%- include('../partials/head.ejs') %>
+
+        <!-- Google Maps -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+        <!-- Jquery -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous">
+        </script>
+
+        <!-- Script -->
+        <script src="../scripts/map.js" charset="utf-8"></script>
+
 	</head>
 	<body>
+
 		<!-- Header  -->
 		<h2 id="header">Welcome to Food Nomad</h1>
 		<%- include('../partials/logout.ejs') %>
@@ -22,11 +35,16 @@
 			<!-- Map Content -->
 			<div class="col s9" id="content">
                 <div id="map">
-                    
+
                 </div>
 			</div>
 
-	
+            <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+            <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw2kUXHSz3hWicoInI4jeLl3w_bErMx_0&callback=initMap&libraries=&v=weekly"
+            async
+        ></script>
+
 		</div>
 		<%- include('../partials/footer.ejs') %>
 	</body>

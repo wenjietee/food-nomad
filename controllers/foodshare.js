@@ -96,5 +96,7 @@ foodShare.delete('/:id', isAuthenticated, (req, res) => {
 });
 
 // food map // create google maps api
-
+foodShare.get('/map', (req, res) => {
+	res.render('food/map.ejs');
+});
 module.exports = foodShare;

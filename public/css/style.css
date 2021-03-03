@@ -26,9 +26,11 @@
 }
 
 /* ! Sidenav */
+
 /* #sidenav {
 	min-width: 15vw;
 } */
+
 #navbtn {
 	width: 12em;
 	margin-top: 2em;
@@ -39,6 +41,7 @@
 }
 
 /* ! Content */
+
 /* #content,
 #recipe-content {
 	overflow-y: scroll;
@@ -76,6 +79,11 @@ footer {
 	/* position: absolute; */
 	width: 100%;
 	bottom: 0px;
+}
+
+/* ! Maps */
+#map {
+	height: 100%;
 }
 
 /* ! Responsive Layout */

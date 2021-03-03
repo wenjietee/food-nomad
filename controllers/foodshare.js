@@ -95,8 +95,18 @@ foodShare.delete('/:id', isAuthenticated, (req, res) => {
 	});
 });
 
-// food map // create google maps api
-foodShare.get('/map', (req, res) => {
-	res.render('food/map.ejs');
+// food map
+foodShare.get('/map', isAuthenticated, (req, res) => {
+	// find all food and users
+	User.find({}, (err, foundUsers) => {
+		Food.find({}, (err, foundFoods) => {
+			res.render('food/map.ejs', {
+				currentUser: req.session.currentUser,
+				users: foundUsers,
+				foods: foundFoods,
+			});
+		});
+	});
 });
+
 module.exports = foodShare;

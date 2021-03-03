@@ -24,16 +24,12 @@
 <label for="quantity">Quantity</label>
 
 <!-- Expiry -->
-<!-- To show expiry in edit field -->
-<input
-	id="expiry"
-	type="date"
-	class="validate"
-	name="expiry"
-	value="<%=food.expiry%>"
-/>
+<input id="expiry" type="date" class="validate" name="expiry" value="" />
 
-<label for="expiry">Expiry Date</label>
+<label for="expiry">
+	<% if (food.expiry !==undefined) { %> <%= `Current Expiry Date:
+	${food.expiry}` %> <% } else { %><%= 'Set Expiry Date' %> <% } %>
+</label>
 
 <!-- Author -->
 <input

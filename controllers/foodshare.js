@@ -95,16 +95,22 @@ foodShare.delete('/:id', isAuthenticated, (req, res) => {
 	});
 });
 
-// food map
+// show map
 foodShare.get('/map', isAuthenticated, (req, res) => {
+	res.render('food/map.ejs', {
+		map: process.env.GOOGLEMAPS_API_KEY,
+	});
+});
+
+// send data
+foodShare.get('/data', (req, res) => {
 	// find all food and users
 	User.find({}, (err, foundUsers) => {
 		Food.find({}, (err, foundFoods) => {
-			res.render('food/map.ejs', {
+			res.send({
 				currentUser: req.session.currentUser,
 				users: foundUsers,
 				foods: foundFoods,
-				map: process.env.GOOGLEMAPS_API_KEY,
 			});
 		});
 	});

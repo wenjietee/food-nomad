@@ -1,12 +1,15 @@
 ////////////////////
-// Init Google Maps
+// Jquery
 ////////////////////
 
-let map;
+$(() => {
+	$.ajax({
+		url: '/food/data',
+	}).then((data) => 
 
-function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: { lat: -34.397, lng: 150.644 },
-		zoom: 8,
-	});
-}
+		console.log(data);
+	}),
+		() => {
+			console.log('bad request');
+		};
+});

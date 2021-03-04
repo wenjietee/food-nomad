@@ -166,7 +166,7 @@ app.delete('/recipe/:id', isAuthenticated, (req, res) => {
 	});
 });
 
-// profile index //display currentUser food data on right card with edit delete
+// profile index
 app.get('/profile', isAuthenticated, (req, res) => {
 	// find current user
 	User.findOne(
@@ -194,7 +194,7 @@ app.get('/profile', isAuthenticated, (req, res) => {
 	);
 });
 
-// other user index //display other user food data on right card
+// other user index
 app.get('/profile/:username', isAuthenticated, (req, res) => {
 	// find user data
 	User.findOne({ username: req.params.username }, (err, foundUser) => {
@@ -213,7 +213,7 @@ app.get('/profile/:username', isAuthenticated, (req, res) => {
 	});
 });
 
-// app index //display all food data on right card
+// app index
 app.get('/', isAuthenticated, (req, res) => {
 	// find all recipes and users
 	User.find({}, (err, foundUsers) => {

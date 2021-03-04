@@ -38,14 +38,33 @@ function initMap() {
 						center: userLocation,
 					});
 				}
-
-				const contentString = `<div id='map-info>
-                <h5>${food.author}</h5>
+				`<div id='map-info>
+                <h7>${food.author}</h7>
                 <p>is sharing</p>
                 <p>${food.name}</p>
                 <p>Quantity: ${food.quantity}</p>
                 <p>Expiry: ${food.expiry}</p>
                 </div>`;
+				const contentString =
+					'<div id="map-info">' +
+					'<a href="/app/profile/' +
+					food.author +
+					'">' +
+					'<h5>' +
+					food.author +
+					'</h5>' +
+					'</a>' +
+					'<p>is sharing</p>' +
+					'<p>' +
+					food.name +
+					'</p>' +
+					'<p>Quantity: ' +
+					food.quantity +
+					'</p>' +
+					'<p>Expiry: ' +
+					food.expiry +
+					'</p>' +
+					'</div>';
 
 				// create info window
 				const infowindow = new google.maps.InfoWindow({
@@ -56,6 +75,10 @@ function initMap() {
 				const marker = new google.maps.Marker({
 					position: userLocation,
 					map,
+				});
+
+				marker.addListener('click', () => {
+					infowindow.open(map, marker);
 				});
 			});
 		});

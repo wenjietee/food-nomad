@@ -9,6 +9,7 @@ const foodSchema = Schema({
 	quantity: { type: Number, required: true, min: 1 },
 	expiry: { type: String, required: true },
 	author: { type: String, required: true },
+	zip: { type: String, required: true },
 });
 
 const Food = mongoose.model('Food', foodSchema);

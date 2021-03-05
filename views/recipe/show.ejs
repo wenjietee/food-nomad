@@ -5,7 +5,8 @@
 	</head>
 	<body>
 		<!-- Header  -->
-		<h2 id="header">Recipe</h2>
+
+		<h1 id="header"><%= recipe.name %></h1>
 		<%- include('../partials/logout.ejs') %>
 
 		<div class="row">
@@ -14,7 +15,6 @@
 			<!-- Content -->
 			<div class="col s12 m8 l9" id="recipe-container">
 				<div id="recipe-content">
-					<h1 id="recipe-title"><%= recipe.name %></h1>
 					<img
 						src="<%= recipe.imageURL %>"
 						class="image-show z-depth-3 respnosive-img"

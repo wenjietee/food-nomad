@@ -20,19 +20,26 @@
 	<body>
 
 		<!-- Header  -->
-		<h2 id="header">Welcome to Food Nomad</h1>
-		<%- include('../partials/logout.ejs') %>
+	
+		<div class="header-flex">
+				
+			<div class="title-container"><h2 class="header-title">Map 🌍</h1>
+		
+				</div>
+			<div id="log-out-container"><%- include('../partials/logout.ejs') %></div>
+		</div>
+		
 
 		<!-- Body -->
 		<div class="row">
 
 			<!-- Side Nav -->
-			<div class="col s3" id="sidenav">
+			<div class="col s12 m4 l3" id="sidenav">
 				<%- include('../partials/nav.ejs') %>
 			</div>
 			
 			<!-- Map Content -->
-			<div class="col s9" id="content">
+			<div class="col s12 m8 l9" id="content">
                 <div id="map">
 
                 </div>

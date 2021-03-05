@@ -4,12 +4,34 @@
 		<%- include('./partials/head.ejs') %>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Food Nomad</h1>
-			<a class="waves-effect waves-light btn" href="/users/new"> Sign Up </a>
-
-			<a class="waves-effect waves-light btn" href="/sessions/new"> Log In </a>
+		<div class="container" id="main-page">
+			<img
+				src="/images/food-nomad-salad-logo.jpg"
+				alt=""
+				class="z-depth-2"
+				id="main-logo"
+			/>
+			<h1 id="app-title">Food Nomad</h1>
+			<div class="main-btn-container">
+				<a
+					class="waves-effect waves-light yellow darken-4 btn log-in-btn"
+					id="sign-up"
+					href="/users/new"
+				>
+					Sign Up
+				</a>
+			</div>
+			<div class="main-btn-container">
+				<a
+					class="waves-effect waves-light white btn log-in-btn"
+					id="log-in"
+					href="/sessions/new"
+				>
+					Log In
+				</a>
+			</div>
 		</div>
+
 		<%- include('./partials/footer.ejs') %>
 	</body>
 </html>

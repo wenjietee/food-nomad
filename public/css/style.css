@@ -1,17 +1,99 @@
+/* ! Debug border */
 /* div {
 	border: 1px solid red;
 } */
 
-/* ! General */
+/* ! Main, Error, Log In/Sign Up */
 
-#sidenav,
-#content,
-#bulletin {
-	height: 75.5vh;
+.frame {
+	width: 100%;
+	height: 5em;
+	background-color: #00695c;
+}
+#header-logo,
+#main-logo {
+	width: 30%;
+	padding: 3.5em;
+	size: 50px;
+	border: 5px solid #aeea00;
+	border-radius: 50%;
+	animation: fadein 2s;
+}
+
+#main-page,
+#error-page {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	padding-top: 6em;
+}
+#app-title {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	text-align: center;
+	animation: fadein 3s;
+}
+
+.main-btn-container {
+	padding: 0.8em;
+}
+
+/* ! Header */
+.header-flex {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-bottom: 1em;
+	justify-content: flex-start;
+}
+.title-container {
+	width: 70%;
+	padding-left: 18em;
+}
+
+#log-out-container {
+	width: 30%;
+	margin-top: 3.5em;
+}
+/* ! Buttons Design */
+
+#navbtn,
+.log-in-btn,
+.submit,
+.back {
+	width: 20em;
+	font-size: 1em;
+	font-weight: 500;
+	border-radius: 9999px;
+}
+
+#navbtn {
+	border-radius: 0px;
+}
+#navbtn:hover {
+	background-color: #f57f17;
 }
 
 #submit-btn {
-	margin-top: 2em;
+	margin-top: 1em;
+}
+.submit,
+.back {
+	width: 10em;
+}
+
+#log-out {
+	color: white;
+	font-weight: 500;
+}
+
+#log-in,
+.back {
+	color: #f57f17;
+	border: 2px solid #f57f17;
+}
+#error-btn {
+	margin-top: 4em;
 }
 
 #delete-btn {
@@ -25,15 +107,65 @@
 	font-size: inherit;
 }
 
+/* ! Forms */
+label {
+	font-size: 14px;
+}
+.back {
+	margin-top: 2em;
+}
+
+textarea,
+p {
+	white-space: pre-wrap;
+}
+
+/* ! General */
+
+#sidenav,
+#content,
+#bulletin {
+	height: 78.5vh;
+}
+
+.container {
+	width: 80%;
+}
+
+img {
+	width: 40%;
+}
+/* ! Card  */
+.card-recipe {
+	font-weight: 500 !important;
+}
+.card {
+	border-radius: 25px !important;
+}
+.card-image {
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+.card-action {
+	border-bottom-left-radius: 25px !important;
+	border-bottom-right-radius: 25px !important;
+}
+.card-action-btn {
+	color: #ef6c00 !important;
+}
 /* ! Sidenav */
 
-/* #sidenav {
-	min-width: 15vw;
-} */
+#sidenav {
+	min-width: 12vw;
+	max-width: 5vw;
+	margin-top: -2em;
+}
 
 #navbtn {
 	width: 12em;
 	margin-top: 2em;
+	margin-left: 1em;
 }
 
 .main {
@@ -42,48 +174,114 @@
 
 /* ! Content */
 
-/* #content,
-#recipe-content {
+#content {
+	max-width: 1100px;
+	overflow-y: auto;
+}
+
+#recipe-container {
 	overflow-y: scroll;
-} */
+	max-height: 700px;
+}
 
 .flex-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .flex-item {
 	margin-left: 2em;
-	width: 400px;
+	max-width: 400px;
 	min-width: 200px;
-}
-
-/* ! Forms */
-textarea,
-p {
-	white-space: pre-wrap;
-}
-#delete {
-	display: inline;
 }
 
 /* ! Bulletin */
 #bulletin {
-	max-width: 250px;
-	min-width: 250px;
+	margin-left: -30%;
+	max-width: 350px;
+	max-height: 700px;
+	border: 2px solid #f57f17;
 }
+#bulletin-container {
+	max-height: 550px;
+	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent; /* make scrollbar transparent */
+}
+
+#delete {
+	display: inline;
+}
+
 /* ! Footer */
 footer {
-	padding-bottom: 1em;
-	/* sticks footer to bottom */
-	/* position: absolute; */
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding: 1em;
 	width: 100%;
-	bottom: 0px;
 }
 
 /* ! Maps */
 #map {
 	height: 100%;
+	margin-left: 5em;
+}
+
+/* ! Animations */
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* ! Responsive Layout */
+
+@media (max-width: 768px) {
+	#main-logo {
+		width: 70%;
+	}
+	#navbtn {
+		width: 30em;
+	}
+	.header-flex {
+		display: flex;
+		flex-direction: column;
+		width: 100;
+	}
+	.header-title {
+		margin-left: 1em;
+		font-size: 2.5em;
+	}
+
+	#log-out-container {
+		margin-left: 30%;
+		margin-top: 0;
+	}
+	#bulletin {
+		margin-top: 20px;
+		margin-left: 40px;
+		width: 300px;
+		height: 500px;
+	}
+
+	#bulletin-container {
+		height: 300px;
+	}
+	#sidenav {
+		height: 40%;
+	}
+	img {
+		width: 80%;
+	}
+	#recipe-container {
+		overflow-y: unset;
+		max-height: 700px;
+	}
+}

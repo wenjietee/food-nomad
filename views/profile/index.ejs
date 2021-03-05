@@ -5,8 +5,15 @@
 	</head>
 	<body>
 		<!-- Header  -->
-		<h2 id="header">Hello, <%= currentUser.username %> </h1>
-		<%- include('../partials/logout.ejs') %>
+
+		<div class="header-flex">
+				
+			<div class="title-container"><h2 class="header-title">Hello, <%= currentUser.username %> 😎</h1>
+		
+				</div>
+			<div id="log-out-container"><%- include('../partials/logout.ejs') %></div>
+		</div>
+		
 		<!-- Body -->
 		<div class="row">
 			<!-- Side Nav -->
@@ -23,18 +30,18 @@
 					 
 					<% userRecipes.forEach(recipe => { %>
 					
-							<div class="card blue-grey darken-1 medium flex-item">
+							<div class="card z-depth-3 medium flex-item">
 								<div class="card-image">
 									<img src="<%= recipe.imageURL %>">
-									<span class="card-title"><%= recipe.name %> </span>
+									<span class="card-title card-recipe"><%= recipe.name %> </span>
 								  </div>
-								<div class="card-content white-text">
-							
+								<div class="card-content">
+									
 									<p><%= recipe.description %> </p>
 								</div>
 								<div class="card-action">
-									<a href="/app/recipe/<%= recipe.id %>">View</a>
-									<a href="/app/recipe/<%= recipe.id %>/edit">Edit</a>
+									<a class="card-action-btn" href="/app/recipe/<%= recipe.id %>">View</a>
+									<a class="card-action-btn" href="/app/recipe/<%= recipe.id %>/edit">Edit</a>
 									<form action="/app/recipe/<%= recipe.id %>?_method=DELETE" method="POST" id="delete">
 										<input type="submit" value="DELETE" id='delete-btn' />
 									</form>
@@ -48,31 +55,33 @@
 			</div>
 
 			<!-- Ingredients Bulletin -->
-			<div class="col s12 m4 l2" id="bulletin">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
+			<div class="col s12 m4 l2">
+				<div class="card z-depth-3 " id="bulletin">
+					<div class="card-content  food-bulletin">
 						<span class="card-title">You're sharing,</span>
-						
+						<p>📧 <%= currentUser.email %></p>
+						<div id="bulletin-container">
 						<!-- Food Card -->
 						<% userFoods.forEach(food => { %>
-							<div class="card blue-grey darken-1 food-card">
-								<div class="card-content white-text">
+							<div class="card orange lighten-4 food-card">
+								<div class="card-content ">
 								  <span class="card-title"><%= food.name %> </span>
 								  <p>Expiry: <%=food.expiry %></p>
 								  <p>Quantity: <%=food.quantity %></p>
-								</div>
-								<div class="card-action">
-									<a href="/food/<%= food.id %>/edit ">Edit</a>
-									<form action="/food/<%= food.id %>?_method=DELETE" method="POST" id="delete">
+								  <hr>
+								  <a class="card-action-btn" href="/food/<%=food.id %>/edit ">EDIT</a>
+									<form action="/food/<%=food.id%>?_method=DELETE" method="POST" id="delete">
 										<input type="submit" value="DELETE" id='delete-btn' />
-									</form>
+								</div>
+							
 							</div>
 						 
 						<% }) %>
 					</div>
+					</div>
 					<div class="card-action">
-						<a href="/food/new">Share Food</a>
-						<a href="/food/map">Map</a>
+						<a class="card-action-btn" href="/food/new">Share Food</a>
+						<a class="card-action-btn" href="/food/map">Map</a>
 					</div>
 				</div>
 			</div>

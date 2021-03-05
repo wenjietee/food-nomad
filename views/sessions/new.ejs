@@ -3,51 +3,54 @@
 	<head>
 		<%- include('../partials/head.ejs') %>
 	</head>
-    <body>
-      <div class='container'>
-        <h1>Existing Nomad</h1>
-        <div >
-          <form action="/sessions" method="POST">
-            <!-- Form For User Log in -->
+	<body>
+		<div class="container">
+			<h1>Existing Nomad</h1>
+			<div>
+				<form action="/sessions" method="POST">
+					<!-- Form For User Log in -->
 
-            <!-- Username -->
-            <div class="row">
-              <div>
-                <input
-                  placeholder="username"
-                  id="username"
-                  type="text"
-                  class="validate"
-                  name="username"
-                  required
-                />
-                <label for="username">User Name</label>
-              </div>
-            </div>
+					<!-- Username -->
+					<div class="row">
+						<div>
+							<input
+								placeholder="username"
+								id="username"
+								type="text"
+								class="validate"
+								name="username"
+								required
+							/>
+							<label for="username">User Name</label>
+						</div>
+					</div>
 
-            <!-- Password -->
-            <div class="row">
-              <div>
-                <input
-                  id="password"
-                  type="password"
-                  class="validate"
-                  name="password"
-                  required
-                />
-                <label for="password">Password</label>
-              </div>
-            </div>
+					<!-- Password -->
+					<div class="row">
+						<div>
+							<input
+								id="password"
+								type="password"
+								class="validate"
+								name="password"
+								required
+							/>
+							<label for="password">Password</label>
+						</div>
+					</div>
 
-            <!-- Submit -->
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-              Submit
-            </button>
-
-          </form>
-          <a class="waves-effect waves-light btn" href="/"> Back </a>
-        </div>
-      </div>
-        <%- include('../partials/footer.ejs') %>
-    </body>
+					<!-- Submit -->
+					<button
+						class="btn waves-effect yellow darken-4 waves-light submit"
+						type="submit"
+						name="action"
+					>
+						Submit
+					</button>
+				</form>
+				<a class="waves-effect waves-light white btn back" href="/"> Back </a>
+			</div>
+		</div>
+		<%- include('../partials/footer.ejs') %>
+	</body>
 </html>

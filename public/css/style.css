@@ -243,7 +243,7 @@ footer {
 
 /* ! Responsive Layout */
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
 	#main-logo {
 		width: 70%;
 	}
@@ -251,17 +251,23 @@ footer {
 		width: 30em;
 	}
 	.header-flex {
-		display: flex;
+		display: block;
 		flex-direction: column;
-		width: 100;
+		justify-content: flex-start;
+		width: 100%;
+		margin-left: -10em;
 	}
+
 	.header-title {
-		margin-left: 1em;
-		font-size: 2.5em;
+		font-size: 3em;
+		text-align: center;
+	}
+	.title-container {
+		width: 100%;
 	}
 
 	#log-out-container {
-		margin-left: 30%;
+		margin-left: 60%;
 		margin-top: 0;
 	}
 	#bulletin {

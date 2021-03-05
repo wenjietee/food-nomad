@@ -158,12 +158,12 @@ img {
 
 #sidenav {
 	min-width: 12vw;
-	max-width: 5vw;
+	max-width: 6vw;
 	margin-top: -2em;
 }
 
 #navbtn {
-	width: 12em;
+	width: 9em;
 	margin-top: 2em;
 	margin-left: 1em;
 }

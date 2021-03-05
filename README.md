@@ -124,24 +124,29 @@ CSS layout is polished after the MVP and stretch goals are fufilled.
 
 ---
 
-| No  | Route  | URL                    | HTTP Verb | Description          |
-| --- | ------ | ---------------------- | --------- | -------------------- |
-| 1   | Index  | /app                   | GET       | Log In/Sign Up page  |
-| 2   | Index  | /app                   | GET       | App Main             |
-| 3   | Index  | /app/profile           | GET       | Current User Profile |
-| 4   | Index  | /app/profile/:username | GET       | Other User Profile   |
-| 5   | New    | /users/new             | GET       | New User Form        |
-| 6   | New    | /sessions/new          | GET       | Returning User Form  |
-| 7   | New    | /app/recipe/new        | GET       | New Recipe Form      |
-| 8   | New    | /food/new              | GET       | New Food Form        |
-| 9   | Create | /app/profile           | POST      | Make New Recipe      |
-| 10  | Create | /food/                 | POST      | Make New Food        |
-| 11  | Create | /users/                | POST      | Make New User        |
-| 12  | Create | /sessions/             | POST      | Make New Session     |
-| 13  | Show   | /app/recipe/:id        | GET       | Show Recipe Page     |
-| 14  | Show   | /food/map              | GET       | Show Map             |
-| 15  | Show   | /food/data             | GET       | Get data payload     |
-| 16  | Edit   | /app/recipe/:id/edit   | GET       | Edit Recipe Form     |
+| No | Route   | URL                    | HTTP Verb | Description          |
+|----|---------|------------------------|-----------|----------------------|
+| 1  | Index   | /app                   | GET       | Log In/Sign Up page  |
+| 2  | Index   | /app                   | GET       | App Main             |
+| 3  | Index   | /app/profile           | GET       | Current User Profile |
+| 4  | Index   | /app/profile/:username | GET       | Other User Profile   |
+| 5  | New     | /users/new             | GET       | New User Form        |
+| 6  | New     | /sessions/new          | GET       | Returning User Form  |
+| 7  | New     | /app/recipe/new        | GET       | New Recipe Form      |
+| 8  | New     | /food/new              | GET       | New Food Form        |
+| 9  | Create  | /app/profile           | POST      | Make New Recipe      |
+| 10 | Create  | /food/                 | POST      | Make New Food        |
+| 11 | Create  | /users/                | POST      | Make New User        |
+| 12 | Create  | /sessions/             | POST      | Make New Session     |
+| 13 | Show    | /app/recipe/:id        | GET       | Show Recipe Page     |
+| 14 | Show    | /food/map              | GET       | Show Map             |
+| 15 | Show    | /food/data             | GET       | Get data payload     |
+| 16 | Edit    | /app/recipe/:id/edit   | GET       | Edit Recipe Form     |
+| 17 | Edit    | /food/:id/edit         | GET       | Edit Food Form       |
+| 18 | Update  | /app/recipe/:id        | PUT       | Update Recipe        |
+| 19 | Update  | /food/:id              | PUT       | Update Food          |
+| 20 | Destroy | /app/recipe/:id        | DELETE    | Delete Recipe        |
+| 21 | Destroy | /food/:id              | DELETE    | Delete Food          |
 
 ## Extra Features Planned
 

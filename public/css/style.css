@@ -93,7 +93,7 @@ p {
 #sidenav,
 #content,
 #bulletin {
-	height: 75.5vh;
+	height: 78.5vh;
 }
 
 .container {
@@ -101,10 +101,27 @@ p {
 }
 
 img {
-	width: 60%;
+	width: 50%;
 }
-/* ! Header  */
+/* ! Card  */
+.card-recipe {
+	font-weight: 500 !important;
+}
+.card {
+	border-radius: 25px !important;
+}
+.card-image {
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+}
 
+.card-action {
+	border-bottom-left-radius: 25px !important;
+	border-bottom-right-radius: 25px !important;
+}
+.card-action-btn {
+	color: #ef6c00 !important;
+}
 /* ! Sidenav */
 
 #sidenav {
@@ -125,6 +142,11 @@ img {
 #content {
 	max-width: 1100px;
 	overflow-y: auto;
+}
+
+#recipe-container {
+	overflow-y: scroll;
+	max-height: 700px;
 }
 
 .flex-container {
@@ -203,5 +225,9 @@ footer {
 	}
 	img {
 		width: 80%;
+	}
+	#recipe-container {
+		overflow-y: unset;
+		max-height: 700px;
 	}
 }

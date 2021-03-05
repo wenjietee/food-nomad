@@ -12,10 +12,13 @@
 			<!-- Side Nav -->
 			<div class="col s12 m4 l3"><%- include('../partials/nav.ejs') %></div>
 			<!-- Content -->
-			<div class="col s12 m8 l9">
+			<div class="col s12 m8 l9" id="recipe-container">
 				<div id="recipe-content">
 					<h1 id="recipe-title"><%= recipe.name %></h1>
-					<img src="<%= recipe.imageURL %>" class="image-show respnosive-img" />
+					<img
+						src="<%= recipe.imageURL %>"
+						class="image-show z-depth-3 respnosive-img"
+					/>
 					<p id="recipe-description"><%= recipe.description %></p>
 					<h6 id="recipe-author">
 						By:

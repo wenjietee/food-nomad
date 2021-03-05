@@ -61,6 +61,15 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 
 [Food Nomad Mobile Mockup](https://www.figma.com/proto/qCspl4i1uAYmXkwF9xs2H7/Food_Nomad_Final?node-id=45%3A0&scaling=scale-down)
 
+My approach is to start with the basic MVP, at it's core its an app to share food recipes and ideas.
+
+Once the basic CRUD is established i extended the recipes to include images.
+
+I've also introduced a Food Schema for users to create and share food, these data
+are represented on Index routes and also on a map which utilises Google Maps and One Map.
+
+CSS layout is polished after the MVP and stretch goals are fufilled.
+
 ## Achievements
 
 ---
@@ -95,6 +104,22 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 
 ---
 
+- Log in
+  ![log in](public/images/fn-login.png)
+- Log in error
+  ![log error](public/images/fn-login-err.png)
+- App Index
+  ![app index](public/images/fn-app-main.png)
+- Recipe
+  ![recipe](public/images/fn-app-recipe.png)
+- Recipe Form
+  ![recipe form](public/images/fn-app-recipe-form.png)
+- Maps
+  ![map](public/images/fn-app-map.png)
+- Mobile Version
+
+  ![mobile](public/images/fn-mobile.png)
+
 ## RESTful Routes
 
 ---
@@ -125,7 +150,3 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 - Dark Theme
 - Able to 'like' user recipes.
 - Able to by most liked recipes.
-
-## Resources
-
----

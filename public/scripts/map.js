@@ -20,11 +20,12 @@ function initMap() {
 		// store data
 		const currentUser = data.currentUser;
 		const foods = data.foods;
+		const users = data.users;
 
 		// iterate food authors' zip code and convert it into lat longs
-		foods.forEach((food) => {
+		users.forEach((user) => {
 			$.ajax({
-				url: `https://developers.onemap.sg/commonapi/search?searchVal=${food.zip}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
+				url: `https://developers.onemap.sg/commonapi/search?searchVal=${user.zip}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
 			}).then((zip) => {
 				// store user location
 				const userLocation = {
@@ -33,36 +34,24 @@ function initMap() {
 				};
 
 				// username match current user center map on user
-				if (food.author === currentUser.username) {
+				if (user.username === currentUser.username) {
 					map.setOptions({
 						center: userLocation,
 					});
 				}
-				`<div id='map-info>
-                <h7>${food.author}</h7>
-                <p>is sharing</p>
-                <p>${food.name}</p>
-                <p>Quantity: ${food.quantity}</p>
-                <p>Expiry: ${food.expiry}</p>
-                </div>`;
+
 				const contentString =
 					'<div id="map-info">' +
 					'<a href="/app/profile/' +
-					food.author +
+					user.username +
 					'">' +
-					'<h5>' +
-					food.author +
-					'</h5>' +
+					'<h6>' +
+					user.username +
+					'</h6>' +
 					'</a>' +
-					'<p>is sharing</p>' +
-					'<p>' +
-					food.name +
-					'</p>' +
-					'<p>Quantity: ' +
-					food.quantity +
-					'</p>' +
-					'<p>Expiry: ' +
-					food.expiry +
+					'<h6>is sharing!</h6>' +
+					'<p>Email: ' +
+					user.email +
 					'</p>' +
 					'</div>';
 

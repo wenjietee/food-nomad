@@ -1,7 +1,7 @@
 /* ! Debug border */
-/* div {
+div {
 	border: 1px solid red;
-} */
+}
 
 /* ! Main, Error, Log In/Sign Up */
 
@@ -104,7 +104,7 @@ p {
 }
 
 img {
-	width: 50%;
+	width: 40%;
 }
 /* ! Card  */
 .card-recipe {
@@ -128,7 +128,7 @@ img {
 /* ! Sidenav */
 
 #sidenav {
-	min-width: 15vw;
+	min-width: 12vw;
 }
 
 #navbtn {
@@ -143,8 +143,7 @@ img {
 /* ! Content */
 
 #content {
-	max-width: 1050px;
-	min-width: 500px;
+	max-width: 1100px;
 	overflow-y: auto;
 }
 
@@ -161,15 +160,17 @@ img {
 
 .flex-item {
 	margin-left: 2em;
-	width: 400px;
+	max-width: 400px;
 	min-width: 200px;
 }
 
 /* ! Bulletin */
 #bulletin {
-	max-width: 300px;
-	min-width: 250px;
+	margin-top: -10px;
+	margin-left: -35%;
+	max-width: 350px;
 	max-height: 700px;
+	border: 2px solid #f57f17;
 }
 #bulletin-container {
 	max-height: 550px;
@@ -209,14 +210,16 @@ footer {
 }
 
 /* ! Responsive Layout */
-
-@media only screen and (max-width: 600px) {
+@media (max-width: 800px) {
+}
+@media (max-width: 768px) {
 	#main-logo {
 		width: 70%;
 	}
 	#navbtn {
 		width: 30em;
 	}
+
 	#bulletin {
 		margin-top: 20px;
 		margin-left: 40px;

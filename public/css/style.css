@@ -1,7 +1,7 @@
 /* ! Debug border */
-div {
+/* div {
 	border: 1px solid red;
-}
+} */
 
 /* ! Main, Error, Log In/Sign Up */
 
@@ -40,11 +40,15 @@ div {
 .main-btn-container {
 	padding: 0.8em;
 }
+
 /* ! Header */
 /* #header {
 	margin-left: 500px;
 } */
+
 /* ! Buttons Design */
+
+#navbtn,
 .log-in-btn,
 .submit,
 .back {
@@ -52,6 +56,17 @@ div {
 	font-size: 1em;
 	font-weight: 500;
 	border-radius: 9999px;
+}
+
+#navbtn {
+	border-radius: 0px;
+}
+#navbtn:hover {
+	background-color: #f57f17;
+}
+
+#submit-btn {
+	margin-top: 1em;
 }
 .submit,
 .back {
@@ -129,11 +144,13 @@ img {
 
 #sidenav {
 	min-width: 12vw;
+	max-width: 5vw;
 }
 
 #navbtn {
 	width: 12em;
 	margin-top: 2em;
+	margin-left: 1em;
 }
 
 .main {
@@ -166,7 +183,6 @@ img {
 
 /* ! Bulletin */
 #bulletin {
-	margin-top: -10px;
 	margin-left: -35%;
 	max-width: 350px;
 	max-height: 700px;

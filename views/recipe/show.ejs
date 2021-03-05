@@ -6,12 +6,17 @@
 	<body>
 		<!-- Header  -->
 
-		<h1 id="header"><%= recipe.name %></h1>
-		<%- include('../partials/logout.ejs') %>
+		<div class="header-flex">	
+			<div class="title-container"><h2 class="header-title"><%= recipe.name %> 🍱</h1>
+		
+				</div>
+			<div id="log-out-container"><%- include('../partials/logout.ejs') %></div>
+		</div>
+
 
 		<div class="row">
 			<!-- Side Nav -->
-			<div class="col s12 m4 l3"><%- include('../partials/nav.ejs') %></div>
+			<div class="col s12 m4 l3" id="sidenav"><%- include('../partials/nav.ejs') %></div>
 			<!-- Content -->
 			<div class="col s12 m8 l9" id="recipe-container">
 				<div id="recipe-content">

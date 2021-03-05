@@ -4,9 +4,16 @@
 		<%- include('../partials/head.ejs') %>
 	</head>
 	<body>
+
 		<!-- Header  -->
-		<h2 id="header"><%= otherUser.username %> </h1>
-		<%- include('../partials/logout.ejs') %>
+		<div class="header-flex">
+				
+			<div class="title-container"><h2 class="header-title"><%= otherUser.username %>'s Page 🙂</h1>
+		
+				</div>
+			<div id="log-out-container"><%- include('../partials/logout.ejs') %></div>
+		</div>
+
 		<!-- Body -->
 		<div class="row">
 			<!-- Side Nav -->

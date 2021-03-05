@@ -5,15 +5,12 @@
 
 /* ! Main, Error, Log In/Sign Up */
 
-/* body {
-	animation: fadein 0.5s;
-} */
-
 .frame {
 	width: 100%;
 	height: 5em;
 	background-color: #00695c;
 }
+#header-logo,
 #main-logo {
 	width: 30%;
 	padding: 3.5em;
@@ -42,10 +39,22 @@
 }
 
 /* ! Header */
-/* #header {
-	margin-left: 500px;
-} */
+.header-flex {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-bottom: 1em;
+	justify-content: flex-start;
+}
+.title-container {
+	width: 70%;
+	padding-left: 18em;
+}
 
+#log-out-container {
+	width: 30%;
+	margin-top: 3.5em;
+}
 /* ! Buttons Design */
 
 #navbtn,
@@ -71,6 +80,11 @@
 .submit,
 .back {
 	width: 10em;
+}
+
+#log-out {
+	color: white;
+	font-weight: 500;
 }
 
 #log-in,
@@ -145,6 +159,7 @@ img {
 #sidenav {
 	min-width: 12vw;
 	max-width: 5vw;
+	margin-top: -2em;
 }
 
 #navbtn {
@@ -183,7 +198,7 @@ img {
 
 /* ! Bulletin */
 #bulletin {
-	margin-left: -35%;
+	margin-left: -30%;
 	max-width: 350px;
 	max-height: 700px;
 	border: 2px solid #f57f17;
@@ -213,6 +228,7 @@ footer {
 /* ! Maps */
 #map {
 	height: 100%;
+	margin-left: 5em;
 }
 
 /* ! Animations */
@@ -226,8 +242,7 @@ footer {
 }
 
 /* ! Responsive Layout */
-@media (max-width: 800px) {
-}
+
 @media (max-width: 768px) {
 	#main-logo {
 		width: 70%;
@@ -235,7 +250,20 @@ footer {
 	#navbtn {
 		width: 30em;
 	}
+	.header-flex {
+		display: flex;
+		flex-direction: column;
+		width: 100;
+	}
+	.header-title {
+		margin-left: 1em;
+		font-size: 2.5em;
+	}
 
+	#log-out-container {
+		margin-left: 30%;
+		margin-top: 0;
+	}
 	#bulletin {
 		margin-top: 20px;
 		margin-left: 40px;

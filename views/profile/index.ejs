@@ -59,6 +59,7 @@
 				<div class="card z-depth-3 " id="bulletin">
 					<div class="card-content  food-bulletin">
 						<span class="card-title">You're sharing,</span>
+						<p>📧 <%= currentUser.email %></p>
 						<div id="bulletin-container">
 						<!-- Food Card -->
 						<% userFoods.forEach(food => { %>
@@ -68,8 +69,8 @@
 								  <p>Expiry: <%=food.expiry %></p>
 								  <p>Quantity: <%=food.quantity %></p>
 								  <hr>
-								  <a class="card-action-btn" href="/food/<%= food.id %>/edit ">EDIT</a>
-									<form action="/food/<%= food.id %>?_method=DELETE" method="POST" id="delete">
+								  <a class="card-action-btn" href="/food/<%=food.id %>/edit ">EDIT</a>
+									<form action="/food/<%=food.id%>?_method=DELETE" method="POST" id="delete">
 										<input type="submit" value="DELETE" id='delete-btn' />
 								</div>
 							

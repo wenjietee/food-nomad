@@ -35,7 +35,7 @@ Auth
 - bcrypt
 - express-sessions
 
-Storage
+Image Storage
 
 - multer
 - multer-storage-cloudinary
@@ -66,6 +66,7 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 ---
 
 - Manage to manipulate and display data onto Google Maps.
+- Manage to implement image upload feature for recipes.
 
 ## Challenges
 
@@ -104,3 +105,7 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 - Dark Theme
 - Able to 'like' user recipes.
 - Able to by most liked recipes.
+
+## Resources
+
+---

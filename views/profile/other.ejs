@@ -43,7 +43,7 @@
 				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
 						<span class="card-title"><%= otherUser.username %>'s sharing</span>
-						
+						<div id="bulletin-container">
 						<!-- Food Card -->
 						<% userFoods.forEach(food => { %>
 							<div class="card blue-grey darken-1 food-card">
@@ -55,6 +55,7 @@
 							</div>
 						 
 						<% }) %>
+					</div>
 					</div>
 					<div class="card-action">
 						<a href="/food/new">Share Food</a>

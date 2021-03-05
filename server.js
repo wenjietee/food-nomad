@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 const userController = require('./controllers/users');
 const sessionsController = require('./controllers/sessions');
 const appController = require('./controllers/app');
+const foodShareController = require('./controllers/foodshare');
 const devController = require('./controllers/dev');
 
 // CONFIG
@@ -38,6 +39,7 @@ mongoose.connection.once('open', () => {
 app.use('/users', userController);
 app.use('/sessions', sessionsController);
 app.use('/app', appController);
+app.use('/food', foodShareController);
 app.use('/dev', devController); //for dev testing
 
 // ROUTES

@@ -3,8 +3,10 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const dev = express.Router();
 const User = require('../models/users');
+const Food = require('../models/food');
 const Recipe = require('../models/recipe');
 const seedData = require('../models/seed');
+const cloudinary = require('cloudinary').v2;
 
 // ROUTES
 
@@ -70,20 +72,14 @@ dev.get('/deleteUsers', (req, res) => {
 	});
 });
 
-// delete recipes
-dev.get('/deleteRecipes', (req, res) => {
-	Recipe.remove({}, (err, allRecipes) => {
-		console.log(allRecipes);
-		res.redirect('/');
-	});
-});
-
 // delete all
 dev.get('/deleteAll', (req, res) => {
 	Recipe.remove({}, (err, allRecipes) => {
 		User.remove({}, (err, allUsers) => {
-			console.log(allUsers);
-			res.redirect('/');
+			Food.remove({}, (err, foundFoods) => {
+				console.log(allUsers);
+				res.redirect('/');
+			});
 		});
 	});
 });

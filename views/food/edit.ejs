@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	<body>
+		<!-- Header  -->
+		<h2 id="header">Edit Food</h2>
+		<%- include('../partials/logout.ejs') %>
+
+		<div class="row">
+			<!-- Side Nav -->
+			<div class="col s12 m4 l3"><%- include('../partials/nav.ejs') %></div>
+			<!-- Content -->
+			<div class="col s12 m8 l9">
+				<div>
+					<!-- Create/Edit Food Form -->
+					<form
+						action="/food/<%=food.id%>?_method=PUT"
+						method="POST"
+						id="foodform"
+					>
+						<%- include('../partials/foodform.ejs') %>
+					</form>
+				</div>
+			</div>
+		</div>
+		<%- include('../partials/footer.ejs') %>
+	</body>
+</html>

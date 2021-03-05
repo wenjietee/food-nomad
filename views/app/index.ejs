@@ -40,15 +40,28 @@
 				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
 						<span class="card-title">We are sharing!</span>
-						<p>Ingredients</p>
+
+						<!-- Food Card -->
+					<% foods.forEach(food => { %>
+						<div class="card blue-grey darken-1 food-card">
+							<div class="card-content white-text">
+							  <span class="card-title"><%= food.name %> </span>
+							  <p>Expiry: <%=food.expiry %></p>
+							  <p>Quantity: <%=food.quantity %></p>
+							  <p>Poster: <%=food.author %></p>
+							</div>
+						</div>
+					 
+					<% }) %>
 					</div>
 					<div class="card-action">
-						<a href="#">Map</a>
+						<a href="/food/new">Share Food</a>
+						<a href="/food/map">Map</a>
 					</div>
 				</div>
 			</div>
+			
 		</div>
-
 		<%- include('../partials/footer.ejs') %>
 	</body>
 </html>

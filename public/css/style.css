@@ -1,6 +1,9 @@
-/* div {
+/*  Debug border */
+div {
 	border: 1px solid red;
-} */
+}
+
+/* ! Log in page */
 
 /* ! General */
 
@@ -72,6 +75,7 @@ p {
 	max-width: 250px;
 	min-width: 250px;
 }
+
 /* ! Footer */
 footer {
 	padding-bottom: 1em;
@@ -84,6 +88,16 @@ footer {
 /* ! Maps */
 #map {
 	height: 100%;
+}
+
+/* ! Animations */
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* ! Responsive Layout */

@@ -22,16 +22,29 @@ Food Nomad is an app that advocates the sharing of recipes, lifehacks and excess
 
 ---
 
-- bcrypt
+Server
+
 - express
-- express-sessions
 - method-override
 - mongoose
 - ejs
 - dotenv
+
+Auth
+
+- bcrypt
+- express-sessions
+
+Storage
+
 - multer
 - multer-storage-cloudinary
 - cloudinary
+
+APIs
+
+- Onemap API (Geocoding zip codes)
+- Google Maps API (Map Display)
 
 ## Database:
 
@@ -52,13 +65,25 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 
 ---
 
+- Manage to manipulate and display data onto Google Maps.
+
 ## Challenges
 
 ---
 
+- Getting promises to work with Google maps as there are calls from the server to the OneMap API as well as Google Map's API.
+
+- Implementing the Cloudinary Image storage with the database
+
 ## Known Issues
 
 ---
+
+- On edit food form, if no amendment to the date is done, the date will be saved as an empty string.
+
+- On edit recipe, if no image is uploaded, on redirect, it will result in an error but non-image data will be saved.
+
+- On edit recipe, ingredients will not formatted properly in the form. If saved, it will be one unformatted string.
 
 ## Screenshots
 
@@ -77,4 +102,5 @@ Inspired by an app idea of the same name from a friend of mine. I've decided to 
 ---
 
 - Dark Theme
-- Google Maps to share location for users to meetup and share ingredients
+- Able to 'like' user recipes.
+- Able to by most liked recipes.

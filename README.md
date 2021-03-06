@@ -105,20 +105,20 @@ CSS layout is polished after the MVP and stretch goals are fufilled.
 ---
 
 - Log in
-  ![log in](public/images/fn-login.png)
+  ![log in](readme_imgs/fn-login.png)
 - Log in error
-  ![log error](public/images/fn-login-err.png)
+  ![log error](readme_imgs/fn-login-err.png)
 - App Index
-  ![app index](public/images/fn-app-main.png)
+  ![app index](readme_imgs/fn-app-main.png)
 - Recipe
-  ![recipe](public/images/fn-app-recipe.png)
+  ![recipe](readme_imgss/fn-app-recipe.png)
 - Recipe Form
-  ![recipe form](public/images/fn-app-recipe-form.png)
+  ![recipe form](readme_imgs/fn-app-recipe-form.png)
 - Maps
-  ![map](public/images/fn-app-map.png)
+  ![map](readme_imgs/fn-app-map.png)
 - Mobile Version
 
-  ![mobile](public/images/fn-mobile.png)
+  ![mobile](readme_imgs/fn-mobile.png)
 
 ## RESTful Routes
 

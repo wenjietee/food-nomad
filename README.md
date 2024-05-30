@@ -10,7 +10,7 @@ Food Nomad is an app that advocates the sharing of recipes, lifehacks and excess
 
 ---
 
-[Food Nomad App Link](https://food-nomad.herokuapp.com/)
+[Food Nomad App Link](https://food-nomad.onrender.com)
 
 ## Wireframe:
 
